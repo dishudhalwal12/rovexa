@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROVEXA | Intelligent Systems</title>
+    
+    <!-- Fonts: Space Grotesk (Swiss Sans) & JetBrains Mono (Tech) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for Luxury Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js for The "System" Visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rovexa-bg': '#F0F2F5',      // Vapor Paper
+                        'rovexa-black': '#1A1A1A',   // Obsidian Charcoal
+                        'rovexa-green': '#B2F838',   // Electric Matcha
+                        'rovexa-grey': '#888888',
+                    },
+                    fontFamily: {
+                        'sans': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F0F2F5;
+            color: #1A1A1A;
+            overflow-x: hidden;
+            cursor: crosshair; /* Precision feel */
+        }
+
+        /* Hide scrollbar for cleaner aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F0F2F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1A1A1A;
+        }
+
+        .text-reveal-line {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .char {
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1A1A1A;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #B2F838;
+        }
+
+        /* Custom selection color */
+        ::selection {
+            background: #1A1A1A;
+            color: #B2F838;
+        }
+
+        .monolith-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none; /* Let clicks pass through */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- LOADER -->
+    <div class="loader-overlay font-mono text-sm">
+        <div class="flex flex-col items-center">
+            <span id="loader-text">// INITIALIZING ROVEXA PROTOCOL...</span>
+            <div class="w-64 h-1 bg-gray-800 mt-4 overflow-hidden">
+                <div class="h-full bg-rovexa-green loader-bar" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 left-0 w-full px-6 py-6 flex justify-between items-center z-50 mix-blend-difference text-rovexa-bg">
+        <div class="text-2xl font-bold tracking-tighter">ROVEXA<span class="text-rovexa-green">.</span></div>
+        <div class="hidden md:flex gap-8 font-mono text-xs">
+            <a href="#what-we-do" class="hover:text-rovexa-green transition-colors">// CAPABILITIES</a>
+            <a href="#philosophy" class="hover:text-rovexa-green transition-colors">// PHILOSOPHY</a>
+            <a href="#contact" class="hover:text-rovexa-green transition-colors">// EXECUTE</a>
+        </div>
+        <a href="#contact" class="font-mono text-xs border border-rovexa-bg px-4 py-2 hover:bg-rovexa-green hover:text-rovexa-black hover:border-rovexa-green transition-all duration-300">
+            GET AUDIT >
+        </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative w-full h-screen flex flex-col justify-center px-6 md:px-20 overflow-hidden">
+        <!-- Three.js Canvas Container -->
+        <div id="canvas-container" class="monolith-container"></div>
+
+        <div class="relative z-10 max-w-7xl">
+            <div class="font-mono text-xs md:text-sm mb-4 text-rovexa-grey overflow-hidden">
+                <div class="reveal-text">// ICP: "ARYAN" DETECTED</div>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tighter mb-8 text-rovexa-black">
+                <div class="overflow-hidden"><span class="reveal-text block">GROW</span></div>
+                <div class="overflow-hidden"><span class="reveal-text block">YOUR BUSINESS.</span></div>
+            </h1>
+
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mt-8">
+                <p class="font-mono text-sm md:text-base max-w-md text-rovexa-black font-medium reveal-text-delay border-l-2 border-rovexa-green pl-4">
+                    // We turn chaotic businesses into automated machines.
+                    <br>
+                    // Premium Identity + Workflow Automation.
+                </p>
+                <button class="group relative px-8 py-4 bg-rovexa-black text-white font-bold text-lg overflow-hidden transition-all hover:scale-105 reveal-text-delay shadow-2xl">
+                    <span class="relative z-10 group-hover:text-rovexa-black transition-colors">START THE MACHINE</span>
+                    <div class="absolute inset-0 bg-rovexa-green transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></div>
+                </button>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-6 md:left-20 font-mono text-xs text-rovexa-black">
+            // SCROLL TO DECRYPT SYSTEM
+        </div>
+    </section>
+
+    <!-- NEW SECTION: CAPABILITIES (The Explainer) -->
+    <section id="what-we-do" class="py-20 px-6 md:px-20 bg-rovexa-bg border-b border-rovexa-black/10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Col 1 -->
+            <div class="flex flex-col gap-4">
+                <div class="w-12 h-12 bg-rovexa-black text-rovexa-green flex items-center justify-center font-bold text-xl mb-2">01</div>
+                <h3 class="text-2xl font-bold">WE BUILD YOUR FACE.</h3>
+                <p class="font-mono text-sm text-gray-600 leading-relaxed">
+                    Generic logos kill pricing power. We design <span class="bg-rovexa-green/30 px-1">luxury brand identities</span>, websites, and visuals that make you look like a market leader instantly.
+                </p>
+            </div>
+            <!-- Col 2 -->
+            <div class="flex flex-col gap-4">
+                <div class="w-12 h-12 bg-rovexa-black text-rovexa-green flex items-center justify-center font-bold text-xl mb-2">02</div>
+                <h3 class="text-2xl font-bold">WE BUILD YOUR BRAIN.</h3>
+                <p class="font-mono text-sm text-gray-600 leading-relaxed">
+                    Manual work is slow. We build custom <span class="bg-rovexa-green/30 px-1">n8n automations & CRM systems</span> that handle leads, sales, and operations while you sleep.
+                </p>
+            </div>
+            <!-- Col 3 -->
+            <div class="flex flex-col gap-4">
+                <div class="w-12 h-12 bg-rovexa-black text-rovexa-green flex items-center justify-center font-bold text-xl mb-2">03</div>
+                <h3 class="text-2xl font-bold">WE BUILD YOUR VOICE.</h3>
+                <p class="font-mono text-sm text-gray-600 leading-relaxed">
+                    Posting randomly doesn't work. We run your <span class="bg-rovexa-green/30 px-1">Social Media & Content Systems</span> to ensure your brand is seen by the people who matter.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE TRUTH (Horizontal Scroll) -->
+    <section id="philosophy" class="py-32 px-6 md:px-20 bg-rovexa-black text-rovexa-bg rounded-t-3xl relative z-20">
+        <div class="border-b border-white/20 pb-4 mb-20 flex justify-between items-end">
+            <h2 class="font-mono text-xs">// 01. THE DIAGNOSIS</h2>
+            <div class="font-mono text-xs text-rovexa-green">STATUS: CRITICAL</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h3 class="text-4xl md:text-6xl font-bold leading-tight mb-8">
+                    MANUAL DATA ENTRY IS <span class="text-rovexa-green">SELF-SABOTAGE.</span>
+                </h3>
+                <p class="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
+                    You think you are hustling. But spending 4 hours fixing Excel sheets isn't leadership. It's an expensive internship.
+                    <br><br>
+                    We treat manual labor as a failure of intelligence. If it can be automated, it must be.
+                </p>
+            </div>
+            <div class="relative h-[400px] w-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden group">
+                <!-- Abstract "Hamster Wheel" Rep -->
+                <div class="w-48 h-48 border-2 border-dashed border-white/30 rounded-full animate-spin-slow group-hover:border-rovexa-green transition-colors duration-500"></div>
+                <div class="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity text-rovexa-green">
+                    // BREAK THE LOOP
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES (Foundation + Flow) -->
+    <section id="services" class="py-32 px-6 md:px-20 bg-rovexa-bg relative z-20">
+        <div class="border-b border-rovexa-black/20 pb-4 mb-20 flex justify-between items-end">
+            <h2 class="font-mono text-xs text-rovexa-black">// 02. THE ARCHITECTURE</h2>
+            <div class="font-mono text-xs text-rovexa-black">MODE: BUILD</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Service Card 1 -->
+            <div class="group border border-rovexa-black p-10 hover:bg-rovexa-black hover:text-white transition-all duration-500 cursor-none service-card">
+                <div class="flex justify-between items-start mb-12">
+                    <span class="font-mono text-xs border border-current px-2 py-1 rounded-full group-hover:border-rovexa-green group-hover:text-rovexa-green">ONE-TIME SETUP</span>
+                    <span class="text-4xl font-light opacity-50">01</span>
+                </div>
+                <h3 class="text-5xl font-bold mb-4">FOUNDATION</h3>
+                <p class="font-mono text-sm opacity-70 mb-8 max-w-sm">
+                    We rebuild your entire ecosystem from scratch.
+                    <br><br>
+                    // Rebranding (Logo, Colors, Voice)<br>
+                    // Website Architecture (High-End)<br>
+                    // CRM Integration (HubSpot/Salesforce)<br>
+                    // n8n Workflow Design (Automation)
+                </p>
+                <div class="w-full h-[1px] bg-current mb-8 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                <div class="flex items-center gap-4 group-hover:translate-x-4 transition-transform duration-300">
+                    <span class="font-bold text-lg group-hover:text-rovexa-green">BUILD THE SYSTEM</span>
+                    <span class="text-xl">→</span>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="group border border-rovexa-black p-10 hover:bg-rovexa-black hover:text-white transition-all duration-500 cursor-none service-card">
+                <div class="flex justify-between items-start mb-12">
+                    <span class="font-mono text-xs border border-current px-2 py-1 rounded-full group-hover:border-rovexa-green group-hover:text-rovexa-green">RECURRING GROWTH</span>
+                    <span class="text-4xl font-light opacity-50">02</span>
+                </div>
+                <h3 class="text-5xl font-bold mb-4">FLOW</h3>
+                <p class="font-mono text-sm opacity-70 mb-8 max-w-sm">
+                    We manage the machine so it never stops.
+                    <br><br>
+                    // Social Media Management<br>
+                    // Content Creation (Reels/Posts)<br>
+                    // Automation Maintenance<br>
+                    // Revenue Optimization
+                </p>
+                <div class="w-full h-[1px] bg-current mb-8 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                <div class="flex items-center gap-4 group-hover:translate-x-4 transition-transform duration-300">
+                    <span class="font-bold text-lg group-hover:text-rovexa-green">MAINTAIN VELOCITY</span>
+                    <span class="text-xl">→</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE VISION / MASCOT NOD -->
+    <section class="py-32 px-6 md:px-20 bg-rovexa-black text-rovexa-bg relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+            <!-- CSS Pattern representing the Panther's mesh -->
+            <div style="background-image: radial-gradient(#B2F838 1px, transparent 1px); background-size: 40px 40px; width: 100%; height: 100%;"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-block border border-rovexa-green text-rovexa-green px-4 py-1 font-mono text-xs mb-8 rounded-full">
+                // AGENT: PANTHER PROTOCOL
+            </div>
+            <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8">
+                SILENT EXECUTION.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">VELOCITY UNLIMITED.</span>
+            </h2>
+            <p class="font-mono text-sm md:text-base text-gray-400 max-w-xl mx-auto mb-12">
+                We don't just design logos. We design the exit strategy. Build a machine that makes money while you sleep.
+            </p>
+            <a href="#contact" class="inline-block bg-rovexa-green text-rovexa-black px-12 py-5 font-bold text-xl hover:bg-white transition-colors duration-300">
+                INSTALL THE SYSTEM
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-rovexa-bg text-rovexa-black pt-20 pb-10 px-6 md:px-20 border-t border-rovexa-black">
+        <div class="flex flex-col md:flex-row justify-between items-start mb-20">
+            <div>
+                <h2 class="text-[12vw] font-bold leading-none tracking-tighter">ROVEXA<span class="text-rovexa-green">.</span></h2>
+            </div>
+            <div class="flex flex-col gap-4 font-mono text-sm text-right mt-10 md:mt-0">
+                <a href="#" class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">INSTAGRAM</a>
+                <a href="#" class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">LINKEDIN</a>
+                <a href="mailto:access@rovexa.com" class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">ACCESS@ROVEXA.COM</a>
+            </div>
+        </div>
+        
+        <div class="flex justify-between items-end border-t border-rovexa-black/10 pt-8 font-mono text-xs opacity-60">
+            <div>
+                // SYSTEM ARCHITECTS<br>
+                // FOUNDATION + FLOW
+            </div>
+            <div>
+                © 2025 ROVEXA INC.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. PRELOADER ---
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            
+            tl.to('.loader-bar', {
+                width: '100%',
+                duration: 1.5,
+                ease: 'power2.inOut'
+            })
+            .to('.loader-overlay', {
+                y: '-100%',
+                duration: 0.8,
+                ease: 'power4.inOut',
+                delay: 0.2
+            })
+            .from('.reveal-text', {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }, "-=0.4")
+            .from('.reveal-text-delay', {
+                y: 20,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }, "-=0.6");
+        });
+
+        // --- 2. THREE.JS "OBSIDIAN MONOLITH" (LIGHT MODE UPDATE) ---
+        const initThreeJS = () => {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            
+            // Camera setup
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Renderer setup
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Performance optimization
+            container.appendChild(renderer.domElement);
+
+            // Objects
+            // 1. The Core (Now Light Silver for Visibility)
+            const coreGeometry = new THREE.IcosahedronGeometry(1.5, 0);
+            const coreMaterial = new THREE.MeshStandardMaterial({
+                color: 0xE5E7EB, // Light Silver/Grey to contrast with Black Text
+                roughness: 0.1,
+                metalness: 0.5,
+                flatShading: true
+            });
+            const core = new THREE.Mesh(coreGeometry, coreMaterial);
+            scene.add(core);
+
+            // 2. The Wireframe (Dark Architecture)
+            const wireGeometry = new THREE.IcosahedronGeometry(2.2, 1);
+            const wireMaterial = new THREE.MeshBasicMaterial({
+                color: 0x1A1A1A, // Dark lines for contrast
+                wireframe: true,
+                transparent: true,
+                opacity: 0.15 // Slight increase for visibility
+            });
+            const wire = new THREE.Mesh(wireGeometry, wireMaterial);
+            scene.add(wire);
+
+            // 3. The Accent (Green Orbit/Data)
+            const accentGeometry = new THREE.TorusGeometry(2.8, 0.02, 16, 100);
+            const accentMaterial = new THREE.MeshBasicMaterial({ color: 0xB2F838 });
+            const accent = new THREE.Mesh(accentGeometry, accentMaterial);
+            accent.rotation.x = Math.PI / 2;
+            accent.rotation.y = Math.PI / 6;
+            scene.add(accent);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+            
+            const greenLight = new THREE.PointLight(0xB2F838, 2, 10);
+            greenLight.position.set(-2, 1, 2);
+            scene.add(greenLight);
+
+            // Mouse Interaction
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            // Animation Loop
+            const animate = () => {
+                requestAnimationFrame(animate);
+
+                targetX = mouseX * 0.001;
+                targetY = mouseY * 0.001;
+
+                // Smooth rotation
+                core.rotation.y += 0.005;
+                core.rotation.x += 0.002;
+                
+                wire.rotation.y -= 0.002;
+                wire.rotation.x -= 0.002;
+
+                accent.rotation.z += 0.01;
+
+                // Mouse interaction lerping
+                core.rotation.y += 0.05 * (targetX - core.rotation.y);
+                core.rotation.x += 0.05 * (targetY - core.rotation.x);
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            // Resize Handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+
+        initThreeJS();
+
+        // --- 3. SCROLL ANIMATIONS (GSAP) ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate Service Cards on Scroll
+        gsap.utils.toArray('.service-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.2,
+                ease: "power3.out"
+            });
+        });
+
+    </script>
+</body>
+</html>
