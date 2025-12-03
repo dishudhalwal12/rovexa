@@ -28,6 +28,27 @@
     <!-- Three.js for The "System" Visualization -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDNH5oMSxF_M51qhbkXHHz19D8YOy1rqik",
+        authDomain: "rovexa-49aa5.firebaseapp.com",
+        projectId: "rovexa-49aa5",
+        storageBucket: "rovexa-49aa5.firebasestorage.app",
+        messagingSenderId: "1045479597194",
+        appId: "1:1045479597194:web:724876ef043e6c2072b973",
+        measurementId: "G-D907G5GW02"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
     <!-- React & Babel for Installer UI -->
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
@@ -1165,10 +1186,18 @@
 
             const handleSubmit = () => {
                 addLog('UPLOADING DATA PACKETS...');
-                setTimeout(() => {
-                    addLog('TRANSMISSION SUCCESSFUL.');
-                    setStep(4); // Success State
-                }, 1500);
+                
+                // Add data to Firestore
+                db.collection("leads").add(formData)
+                    .then((docRef) => {
+                        addLog(`SUCCESS: Document written with ID: ${docRef.id}`);
+                        addLog('TRANSMISSION SUCCESSFUL.');
+                        setStep(4); // Success State
+                    })
+                    .catch((error) => {
+                        addLog(`ERROR: ${error.message}`);
+                        console.error("Error adding document: ", error);
+                    });
             };
 
             const handleChange = (e) => {
@@ -1251,7 +1280,7 @@
                                     <h3 className="text-3xl md:text-5xl font-bold">PHASE 02: DIAGNOSTICS</h3>
                                     <div className="space-y-6">
                                         <div className="group">
-                                            <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">COMPANY/LINKDLN URL (OPTIONAL)</label>
+                                            <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">COMPANY/PROJECT NAME</label>
                                             <input 
                                                 name="company"
                                                 value={formData.company}
@@ -1263,7 +1292,7 @@
                                             />
                                         </div>
                                         <div className="group">
-                                            <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">CURRENT REVENUE BAND (OPTIONAL)</label>
+                                            <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">CURRENT REVENUE BAND</label>
                                             <select 
                                                 name="revenue"
                                                 value={formData.revenue}
