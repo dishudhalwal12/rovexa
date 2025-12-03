@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROVEXA | Intelligent Systems</title>
+    <title>Rovexa | Grow's Business</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=2">
+    <link rel="manifest" href="/favicon.ico?v=2">
+    <link rel="mask-icon" href="/favicon.ico?v=2" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
     
     <!-- Fonts: Space Grotesk (Swiss Sans) & JetBrains Mono (Tech) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +33,7 @@
             theme: {
                 extend: {
                     colors: {
-                        'rovexa-bg': '#F0F2F5',      // Vapor Paper
+                        'rovexa-bg': '#F4F5ED',      // Vapor Paper
                         'rovexa-black': '#1A1A1A',   // Obsidian Charcoal
                         'rovexa-green': '#B2F838',   // Electric Matcha
                         'rovexa-grey': '#888888',
@@ -52,7 +60,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #F0F2F5;
+            background: #F4F5ED;
         }
         ::-webkit-scrollbar-thumb {
             background: #1A1A1A;
@@ -95,9 +103,46 @@
             height: 100%;
             z-index: 0;
         }
+
+        #integrity-modal {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .cta-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(178, 248, 56, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(178, 248, 56, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(178, 248, 56, 0); }
+        }
+
+        #testimonial-bubble {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- TESTIMONIAL BUBBLE -->
+    <div id="testimonial-bubble" class="hidden fixed bottom-8 right-8 w-80 bg-rovexa-black text-rovexa-bg p-5 rounded-lg shadow-2xl transform translate-y-16 opacity-0 z-50">
+        <button id="close-bubble" class="absolute top-2 right-3 text-rovexa-grey hover:text-white">&times;</button>
+        <p id="testimonial-text" class="font-mono text-sm"></p>
+    </div>
+
+    <!-- SYSTEM INTEGRITY MODAL -->
+    <div id="integrity-modal" class="hidden fixed inset-0 bg-rovexa-black bg-opacity-90 z-[9999] flex justify-center items-center text-rovexa-bg p-4 opacity-0">
+        <div class="w-full max-w-2xl text-center font-mono">
+            <h2 id="modal-title" class="text-3xl md:text-5xl font-bold text-rovexa-green mb-4"></h2>
+            <p id="modal-message" class="text-lg md:text-xl mb-8"></p>
+            <div class="flex justify-center gap-4">
+                <button id="modal-action-btn" class="bg-rovexa-green text-rovexa-black px-8 py-3 font-bold hover:bg-white transition-colors">INITIATE AUDIT</button>
+                <button id="modal-close-btn" class="border border-rovexa-grey text-rovexa-grey px-8 py-3 font-bold hover:bg-rovexa-grey hover:text-rovexa-black transition-colors">CONTINUE MONITORING</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- LOADER -->
     <div class="loader-overlay font-mono text-sm">
@@ -216,10 +261,32 @@
         </div>
     </section>
 
+    <!-- INTERACTIVE DIAGNOSIS TOOL -->
+    <section id="diagnosis-tool" class="py-32 px-6 md:px-20 bg-rovexa-bg relative z-20 border-t-2 border-rovexa-black">
+        <div class="border-b border-rovexa-black/20 pb-4 mb-20 flex justify-between items-end">
+            <h2 class="font-mono text-xs text-rovexa-black">// 02. SYSTEM AUDIT</h2>
+            <div class="font-mono text-xs text-rovexa-black">MODE: ANALYSIS</div>
+        </div>
+
+        <div id="quiz-container" class="max-w-3xl mx-auto">
+            <!-- Questions will be injected here by JS -->
+        </div>
+
+        <div id="results-container" class="hidden max-w-3xl mx-auto text-center">
+            <h3 class="text-2xl font-bold mb-4">YOUR EFFICIENCY SCORE:</h3>
+            <div id="score" class="text-8xl font-bold text-rovexa-green mb-8"></div>
+            <p id="analysis" class="font-mono text-lg text-gray-700 mb-12"></p>
+            <a href="#contact" class="inline-block bg-rovexa-green text-rovexa-black px-12 py-5 font-bold text-xl hover:bg-rovexa-black hover:text-rovexa-green transition-colors duration-300">
+                SCHEDULE YOUR UPGRADE
+            </a>
+        </div>
+    </section>
+
+
     <!-- SERVICES (Foundation + Flow) -->
     <section id="services" class="py-32 px-6 md:px-20 bg-rovexa-bg relative z-20">
         <div class="border-b border-rovexa-black/20 pb-4 mb-20 flex justify-between items-end">
-            <h2 class="font-mono text-xs text-rovexa-black">// 02. THE ARCHITECTURE</h2>
+            <h2 class="font-mono text-xs text-rovexa-black">// 03. THE ARCHITECTURE</h2>
             <div class="font-mono text-xs text-rovexa-black">MODE: BUILD</div>
         </div>
 
@@ -487,7 +554,339 @@
         setTimeout(initThreeJS, 100);
 
 
-        // --- 3. SCROLL ANIMATIONS (GSAP) ---
+        // --- 3. INTERACTIVE DIAGNOSIS TOOL ---
+        const diagnosisTool = () => {
+            const quizContainer = document.getElementById('quiz-container');
+            const resultsContainer = document.getElementById('results-container');
+            const scoreEl = document.getElementById('score');
+            const analysisEl = document.getElementById('analysis');
+
+            const questions = [
+                {
+                    question: "How many hours per week does your team spend on repetitive manual tasks?",
+                    answers: [
+                        { text: "0-2 Hours (Optimized)", value: 10 },
+                        { text: "3-5 Hours (Some Drag)", value: 6 },
+                        { text: "6-10 Hours (Significant Drag)", value: 3 },
+                        { text: "10+ Hours (Critical Failure)", value: 0 }
+                    ]
+                },
+                {
+                    question: "How would you describe your lead tracking and sales process?",
+                    answers: [
+                        { text: "Fully Automated CRM", value: 10 },
+                        { text: "Managed in Spreadsheets", value: 4 },
+                        { text: "Sticky Notes & Memory", value: 1 },
+                        { text: "No Formal Process", value: 0 }
+                    ]
+                },
+                {
+                    question: "How consistent is your social media and content output?",
+                    answers: [
+                        { text: "Daily, On-Brand Posts", value: 10 },
+                        { text: "A few times a week", value: 6 },
+                        { text: "Whenever we have time", value: 2 },
+                        { text: "What's social media?", value: 0 }
+                    ]
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let userScore = 0;
+
+            const renderQuestion = () => {
+                if (currentQuestionIndex >= questions.length) {
+                    showResults();
+                    return;
+                }
+                const question = questions[currentQuestionIndex];
+                quizContainer.innerHTML = `
+                    <div class="text-center mb-12">
+                        <h4 class="text-3xl font-bold mb-4">${question.question}</h4>
+                        <p class="font-mono text-sm text-gray-500">// QUESTION ${currentQuestionIndex + 1} OF ${questions.length}</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${question.answers.map(answer => `
+                            <button class="quiz-answer text-left font-mono text-sm border border-rovexa-black p-6 hover:bg-rovexa-black hover:text-rovexa-green transition-colors duration-300" data-value="${answer.value}">
+                                ${answer.text}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            };
+
+            quizContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('quiz-answer')) {
+                    userScore += parseInt(e.target.dataset.value);
+                    currentQuestionIndex++;
+                    renderQuestion();
+                }
+            });
+
+            const showResults = () => {
+                const finalScore = Math.round((userScore / (questions.length * 10)) * 100);
+                scoreEl.textContent = `${finalScore}%`;
+                
+                let analysisText = "";
+                if (finalScore >= 80) {
+                    analysisText = "Your systems are highly optimized. ROVEXA can help you scale your success to the next level with advanced revenue optimization.";
+                } else if (finalScore >= 50) {
+                    analysisText = "Your business has a solid foundation, but significant efficiency gains are being left on the table. Automation in key areas could unlock rapid growth.";
+                } else {
+                    analysisText = "CRITICAL: Your business is likely losing significant time and money to manual processes. A full system overhaul is recommended to prevent stagnation.";
+                }
+                analysisEl.textContent = `// ${analysisText}`;
+
+                quizContainer.classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+            };
+
+            renderQuestion();
+        };
+
+        diagnosisTool();
+
+
+        // --- 5. SYSTEM INTEGRITY ALERT ---
+        const integrityAlert = () => {
+            const modal = document.getElementById('integrity-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMessage = document.getElementById('modal-message');
+            const actionBtn = document.getElementById('modal-action-btn');
+            const closeBtn = document.getElementById('modal-close-btn');
+            const heroCTA = document.querySelector('.reveal-text-delay button');
+            const resultsCTA = document.querySelector('#results-container a');
+
+            let alertLevel = 0;
+            let timer;
+
+            const alerts = [
+                {
+                    delay: 60000, // 30 seconds
+                    title: "// WARNING: SYSTEM INEFFICIENCY DETECTED",
+                    message: "Manual processes are draining resources. Initiate a complimentary audit to restore full power and quantify your automation potential."
+                },
+                {
+                    delay: 70000, // 60 seconds after the first closes
+                    title: "// CRITICAL ALERT: RESOURCE DRAIN ACCELERATING",
+                    message: "Significant operational drag detected. System integrity is now compromised. An immediate audit is recommended to prevent critical failure."
+                },
+                {
+                    delay: 90000, // 45 seconds after the second closes
+                    title: "// FINAL WARNING: CATASTROPHIC FAILURE IMMINENT",
+                    message: "Your window of opportunity is closing. This is the final recommendation to run a diagnostic before total system collapse becomes unavoidable."
+                }
+            ];
+
+            const showModal = () => {
+                if (alertLevel >= alerts.length) {
+                    // After the last alert, make the CTAs pulse
+                    heroCTA.classList.add('cta-pulse');
+                    resultsCTA.classList.add('cta-pulse');
+                    return;
+                }
+                const alert = alerts[alertLevel];
+                modalTitle.textContent = alert.title;
+                modalMessage.textContent = alert.message;
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10); // Fade in
+                alertLevel++;
+            };
+
+            const hideModal = () => {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 500); // Fade out
+                startTimer(); // Start timer for the next alert
+            };
+
+            const startTimer = () => {
+                if (alertLevel < alerts.length) {
+                    clearTimeout(timer);
+                    timer = setTimeout(showModal, alerts[alertLevel].delay);
+                }
+            };
+
+            actionBtn.addEventListener('click', () => {
+                document.getElementById('diagnosis-tool').scrollIntoView({ behavior: 'smooth' });
+                hideModal();
+                clearTimeout(timer); // Stop further alerts
+            });
+
+            closeBtn.addEventListener('click', hideModal);
+
+            // Start the first timer after the page loads
+            startTimer();
+        };
+
+        integrityAlert();
+
+
+        // --- 6. TESTIMONIAL BUBBLE ---
+        const testimonialBubble = () => {
+            const bubble = document.getElementById('testimonial-bubble');
+            const closeBtn = document.getElementById('close-bubble');
+            const textField = document.getElementById('testimonial-text');
+
+            const testimonials = [
+    // --- THE "FOUNDATION" WINS (Efficiency & Setup) ---
+    { name: "Aarav Prakash", text: "just increased team efficiency by 40% with the Foundation Protocol." },
+    { name: "Isha Malhotra", text: "automated over 15 hours/week of manual tasks." },
+    { name: "Vihaan Suri", text: "saw a 200% increase in qualified leads within 60 days." },
+    { name: "Anika Deshmukh", text: "reports their new brand identity has doubled their pricing power." },
+    { name: "Rohan Bhatt", text: "just secured their largest client with their new automated sales funnel." },
+    { name: "Karan Vashisht", text: "finally fired himself from Excel duty. The n8n workflow handles it all." },
+    { name: "Priya Nanduri", text: "reduced client onboarding time from 3 days to 45 minutes." },
+    { name: "Suresh Kulkarni", text: "says the CRM integration caught 50+ leads that were slipping through cracks." },
+    { name: "Aditya Rathore", text: "scaled to 30 clients without hiring a single new operations manager." },
+    { name: "Meera Kulshreshtha", text: "automations handled the entire Diwali rush without a single error." },
+
+    // --- THE "FLOW" WINS (Revenue & Growth) ---
+    { name: "Vikram Ahluwalia", text: "hit their first ₹10L month after implementing the Content System." },
+    { name: "Sanya Virk", text: "brand perception went from 'freelancer' to 'agency' overnight." },
+    { name: "Arjun Khatri", text: "says the new website architecture increased conversion rate by 3.5%." },
+    { name: "Divya Raghavan", text: "stopped chasing payments; the automated invoice chaser works perfectly." },
+    { name: "Kabir Anand", text: "booked 12 demo calls this week purely through the new inbound engine." },
+    { name: "Neha Vardhan", text: "just closed a Tier-1 corporate deal thanks to the brand revamp." },
+    { name: "Rajesh Bhandari", text: "manufacturing ops are finally syncing with sales in real-time." },
+    { name: "Simran Talwar", text: "D2C repeat purchase rate went up 25% with the automated email flows." },
+    { name: "Tarun Kochhar", text: "says Rovexa isn't an agency, it's an unfair advantage." },
+    { name: "Pooja Narang", text: "content strategy is now generating leads while she sleeps." },
+
+    // --- THE "LIFESTYLE" WINS (Freedom & Clarity) ---
+    { name: "Manish Khandelwal", text: "took his first weekend off in 2 years. The system didn't break." },
+    { name: "Riya Madan", text: "finally understands where her revenue is actually coming from." },
+    { name: "Varun Jaisinghani", text: "says the clarity Rovexa brought to his chaotic agency is priceless." },
+    { name: "Alisha Deol", text: "stopped doing low-value admin work. Focus is back on strategy." },
+    { name: "Dhruv Chattopadhyay", text: "the automated reporting saved his team 5 hours every Monday morning." },
+    { name: "Kriti Bhaduri", text: "her team is actually happy now that grunt work is automated." },
+    { name: "Nikhil Wadia", text: "scaled ad spend confidently because the backend can handle the volume." },
+    { name: "Zoya Trivedi", text: "branding looks so premium her competitors are asking who did it." },
+    { name: "Amitabh Kulshrestha", text: "inventory sync issues are gone. 100% accuracy for the first time." },
+    { name: "Sneha Gokhale", text: "customer support response time dropped from 4 hours to instant." },
+
+    // --- THE "SPECIFIC INDUSTRY" WINS ---
+    { name: "Gaurav Narang", text: "real estate lead follow-ups are now instant. Closing ratio up 15%." },
+    { name: "Farhan Zaidi", text: "EdTech student onboarding is now fully touchless." },
+    { name: "Tanvi Bhargava", text: "jewelry brand looks international now. Trust score skyrocketed." },
+    { name: "Rishab Venkataraman", text: "fitness coaching business runs on autopilot. He just coaches." },
+    { name: "Deepak Sanghvi", text: "logistics data entry is zero. Drivers update via WhatsApp bot." },
+    { name: "Anjali Kashyap", text: "clinical appointments book themselves. No more reception chaos." },
+    { name: "Harsh Mahadik", text: "legal practice billing is finally on time, every time." },
+    { name: "Ishaan Virdi", text: "creative agency workflow is smooth. No more missed deadlines." },
+    { name: "Vandana Rao", text: "franchise operations are finally standardized across 5 cities." },
+    { name: "Mohit Gulati", text: "SaaS churn rate dropped thanks to automated success check-ins." },
+
+    // --- THE "SHORT & PUNCHY" WINS ---
+    { name: "Dev Khurana", text: "system handles the grunt work. I handle the vision." },
+    { name: "Shruti Vyas", text: "worth every rupee for the peace of mind alone." },
+    { name: "Kunal Menon", text: "Rovexa builds machines, not just websites." },
+    { name: "Radhika Solanki", text: "finally a partner that understands speed and aesthetics." },
+    { name: "Siddharth Rajvanshi", text: "the ROI on the automation setup was less than 30 days." },
+    { name: "Jhanvi Khurana", text: "social growth is compounding. The system works." },
+    { name: "Ayushmaan Tandon", text: "my business feels like a tech company now." },
+    { name: "Mira Bedi", text: "aesthetic intelligence plus raw efficiency. Rare find." },
+    { name: "Shaan Verma", text: "execution velocity has never been higher." },
+    { name: "Kiara Menon", text: "stopped renting reputation. Started building legacy." }
+
+// --- ADDITIONAL 50 TESTIMONIALS ---
+
+,
+{ name: "Ayaan Khatter", text: "cut operational chaos by 70% after the automation overhaul." },
+{ name: "Mahira Bhatia", text: "finally runs her agency without feeling like the bottleneck." },
+{ name: "Rudra Chauhan", text: "closing deals faster thanks to the new proposal workflow." },
+{ name: "Tara Wadhwa", text: "brand now looks international. Clients treat us differently." },
+{ name: "Rehaan Dutt", text: "went from firefighting to scaling mode within 30 days." },
+{ name: "Lavanya Gokhale", text: "loves how clean and fast her new CRM pipeline feels." },
+{ name: "Ishaan Sood", text: "cut customer response time by 90% with automated routing." },
+{ name: "Nitya Sahni", text: "the new website makes us look 3x bigger than we are." },
+{ name: "Kartik Rao", text: "automation saved his sales team from drowning in follow-ups." },
+{ name: "Diya Chhabra", text: "her D2C ops run like a silent machine now." },
+
+{ name: "Rehan Mallick", text: "their dashboard removed all confusion. Finally has clarity." },
+{ name: "Suhani Vashisht", text: "journey from cluttered brand to premium powerhouse." },
+{ name: "Arnav Banerjee", text: "automated task delegation boosted productivity instantly." },
+{ name: "Myra Jaiswal", text: "every customer touchpoint feels intentional now." },
+{ name: "Kabir Luthra", text: "his founders’ guilt vanished after automating the busywork." },
+{ name: "Aditi Mehra", text: "brand revamp helped her double her service pricing overnight." },
+{ name: "Yuvraj Karmakar", text: "no more missed leads. Inbox finally under control." },
+{ name: "Ira Venkatesh", text: "content system posting daily without her touching it." },
+{ name: "Shaurya Bafna", text: "team alignment improved. Everyone knows the workflow now." },
+{ name: "Samaira Tandon", text: "her ops manager literally thanked her for bringing Rovexa in." },
+
+{ name: "Eshan Oberoi", text: "customer churn dropped once automations kicked in." },
+{ name: "Maahi Kohli", text: "social content is consistent and on-brand every day." },
+{ name: "Kushal Pradhan", text: "real-time analytics dashboard changed his decision-making." },
+{ name: "Trisha Bhogle", text: "she finally stopped micromanaging. System runs the day." },
+{ name: "Nakul Vardhan", text: "project delivery time is down by 40%." },
+{ name: "Avni Sabharwal", text: "website load time is insanely fast after redesign." },
+{ name: "Devansh Purohit", text: "CRM pipeline is so smooth it feels unreal." },
+{ name: "Kyra Mahadik", text: "workflow automation saved her team from burnout." },
+{ name: "Shaurya Gill", text: "brand architecture made investors take him seriously." },
+{ name: "Ridhi Sandhu", text: "sales jumped the day the new brand identity went live." },
+
+{ name: "Zayden Nambiar", text: "agency moved from chaos to predictable flow." },
+{ name: "Amaira Chatterjee", text: "customer LTV increasing after email automation setup." },
+{ name: "Reyansh Pillai", text: "finally stopped hopping between 12 tools." },
+{ name: "Anya Godbole", text: "the onboarding experience feels luxury now." },
+{ name: "Dhruv Vora", text: "team meetings cut in half since everything runs smoothly." },
+{ name: "Kiara Jhaveri", text: "brand consistency across platforms is flawless." },
+{ name: "Riaan Motwani", text: "automation freed him from being the 'everything guy'." },
+{ name: "Advika Seth", text: "new brand aesthetic attracts high-quality clients only." },
+{ name: "Aarush Singhania", text: "sales ops no longer depend on human memory." },
+{ name: "Inaaya Bhasin", text: "her D2C brand now feels modern, premium, and engineered." },
+
+{ name: "Kabir Sehgal", text: "went from 70 tabs open to one dashboard. Sanity restored." },
+{ name: "Rhea More", text: "automation cleaned up years of backend mess." },
+{ name: "Zavian Rawte", text: "brand storytelling finally matches product quality." },
+{ name: "Tanisha Duggal", text: "call bookings increase after website restructuring." },
+{ name: "Aarav Jhala", text: "sync issues across tools are gone forever." },
+{ name: "Misha Narain", text: "email open rates doubled with the new flows." },
+{ name: "Kabir Deora", text: "his team finally focuses on strategy over grunt work." },
+{ name: "Aadhya Saxena", text: "brand feels premium. Ops feel frictionless." },
+{ name: "Kiaan Meher", text: "never imagined automation could be this aesthetic." },
+{ name: "Avira Bajaj", text: "her business feels organized for the first time ever." }
+];
+
+            let bubbleTimer;
+
+            const showBubble = () => {
+                const randomTestimonial = testimonials[Math.floor(Math.random() * testimonials.length)];
+                textField.innerHTML = `<span class="text-rovexa-green font-bold">${randomTestimonial.name}</span> ${randomTestimonial.text}`;
+                
+                bubble.classList.remove('hidden');
+                setTimeout(() => {
+                    bubble.classList.remove('translate-y-16', 'opacity-0');
+                }, 10);
+
+                // Hide after 12.5 seconds
+                bubbleTimer = setTimeout(hideBubble, 12500);
+            };
+
+            const hideBubble = () => {
+                clearTimeout(bubbleTimer);
+                bubble.classList.add('translate-y-16', 'opacity-0');
+                setTimeout(() => {
+                    bubble.classList.add('hidden');
+                    // Schedule the next bubble
+                    scheduleNextBubble();
+                }, 500);
+            };
+            
+            const scheduleNextBubble = () => {
+                const randomDelay = Math.random() * 1000 + 5500; // 10-20 seconds
+                setTimeout(showBubble, randomDelay);
+            };
+
+            closeBtn.addEventListener('click', hideBubble);
+
+            // Start the cycle
+            scheduleNextBubble();
+        };
+
+        testimonialBubble();
+
+
+        // --- 4. SCROLL ANIMATIONS (GSAP) ---
         gsap.registerPlugin(ScrollTrigger);
 
         // Animate Service Cards on Scroll
