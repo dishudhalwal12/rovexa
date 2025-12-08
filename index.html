@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="googled009ec2f95969121" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>ROVEXA | System Architecture for Founders</title>
     <meta name="title" content="ROVEXA | System Architecture for Founders">
     <meta name="description" content="Stop renting your reputation. Rovexa builds premium brand identities and n8n automation systems that replace manual work. The operating system for modern business.">
@@ -22,37 +23,27 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://rovexa.space/og-luxury-card.jpg">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="https://rovexa.space/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://rovexa.space/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://rovexa.space/favicon.png">
-    <link rel="manifest" href="/favicon.png">
-    <link rel="mask-icon" href="/favicon.png" color="#5bbad5">
+    <link rel="icon" href="https://rovexa.space/favicon.ico" sizes="any">
+
+    <link rel="icon" type="image/png" href="https://rovexa.space/favicon.png">
     
+    <link rel="apple-touch-icon" href="https://rovexa.space/favicon.png">
+
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-    
-    <!-- Fonts: Space Grotesk (Swiss Sans) & JetBrains Mono (Tech) -->
+    <meta name="theme-color" content="#F4F5ED">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- GSAP for Luxury Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Three.js for The "System" Visualization -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
 
     <script>
-      // Your web app's Firebase configuration
+      // Firebase Config
       const firebaseConfig = {
         apiKey: "AIzaSyDNH5oMSxF_M51qhbkXHHz19D8YOy1rqik",
         authDomain: "rovexa-49aa5.firebaseapp.com",
@@ -62,13 +53,10 @@
         appId: "1:1045479597194:web:724876ef043e6c2072b973",
         measurementId: "G-D907G5GW02"
       };
-
-      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
     </script>
 
-    <!-- React & Babel for Installer UI -->
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -78,9 +66,9 @@
             theme: {
                 extend: {
                     colors: {
-                        'rovexa-bg': '#F4F5ED',      // Vapor Paper
-                        'rovexa-black': '#1A1A1A',   // Obsidian Charcoal
-                        'rovexa-green': '#B2F838',   // Electric Matcha
+                        'rovexa-bg': '#F4F5ED',
+                        'rovexa-black': '#1A1A1A',
+                        'rovexa-green': '#B2F838',
                         'rovexa-grey': '#888888',
                     },
                     fontFamily: {
@@ -91,139 +79,63 @@
             }
         }
     </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Corporation",
+      "name": "ROVEXA",
+      "url": "https://rovexa.space",
+      "logo": "https://rovexa.space/favicon.png",
+      "description": "Rovexa is a System Architecture Firm. We replace manual labor with automated n8n workflows and build premium brand identities for high-growth founders.",
+      "foundingDate": "2024",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Divyanshu"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8386066280", 
+        "contactType": "sales",
+        "areaServed": "Global",
+        "availableLanguage": "English"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rovexa.space",
+        "https://www.linkedin.com/company/rovexa-business",
+        "https://twitter.com/rovexa"
+      ],
+      "knowsAbout": ["Brand Identity", "Business Automation", "n8n", "System Architecture"]
+    }
+    </script>
 
     <style>
         body {
             background-color: #F0F2F5;
             color: #1A1A1A;
             overflow-x: hidden;
-            cursor: crosshair; /* Precision feel */
+            cursor: crosshair; 
         }
-
-        /* Hide scrollbar for cleaner aesthetic */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F4F5ED;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1A1A1A;
-        }
-
-        .text-reveal-line {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-        
-        .char {
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .loader-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1A1A1A;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #B2F838;
-        }
-
-        /* Custom selection color */
-        ::selection {
-            background: #1A1A1A;
-            color: #B2F838;
-        }
-
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        #integrity-modal {
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .cta-pulse {
-            animation: pulse 2s infinite;
-        }
-
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F4F5ED; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        .text-reveal-line { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+        .char { transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .loader-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1A1A1A; z-index: 9999; display: flex; justify-content: center; align-items: center; color: #B2F838; }
+        ::selection { background: #1A1A1A; color: #B2F838; }
+        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        #integrity-modal { transition: opacity 0.5s ease-in-out; }
+        .cta-pulse { animation: pulse 2s infinite; }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(178, 248, 56, 0.7); }
             70% { box-shadow: 0 0 0 20px rgba(178, 248, 56, 0); }
             100% { box-shadow: 0 0 0 0 rgba(178, 248, 56, 0); }
         }
-
-        #testimonial-bubble {
-            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-        }
-
-        .nav-scrolled {
-            background-color: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(10px);
-        }
+        #testimonial-bubble { transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
+        .nav-scrolled { background-color: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); }
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "ROVEXA",
-  "url": "https://rovexa.space",
-  "logo": "https://rovexa.space/logo.png",
-  "sameAs": [
-    "https://www.instagram.com/rovexa.space",
-    "https://www.linkedin.com/company/rovexa-business/"
-  ],
-  "description": "Rovexa is a System Architecture Firm. We replace manual labor with automated workflows and build premium brand identities for high-growth founders.",
-  "founder": {
-    "@type": "Person",
-    "name": "Divyanshu"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "sales",
-    "email": "rovexa.studio@gmail.com"
-  }
-}</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Corporation",
-  "name": "ROVEXA",
-  "url": "https://rovexa.space",
-  "logo": "https://rovexa.space/logo.png",
-  "description": "Rovexa is a System Architecture Firm. We replace manual labor with automated n8n workflows and build premium brand identities for high-growth founders.",
-  "foundingDate": "2024",
-  "founders": [
-    {
-      "@type": "Person",
-      "name": "Divyanshu"
-    }
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+91-8386066280", 
-    "contactType": "sales",
-    "areaServed": "Global",
-    "availableLanguage": "English"
-  },
-  "sameAs": [
-    "https://www.instagram.com/rovexa.space",
-    "https://www.linkedin.com/company/rovexa-business",
-    "https://twitter.com/rovexa"
-  ],
-  "knowsAbout": ["Brand Identity", "Business Automation", "n8n", "System Architecture"]
-}
-</script>
 </head>
 <body class="antialiased">
 
