@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="googled009ec2f95969121" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>ROVEXA | System Architecture for Founders</title>
     <meta name="title" content="ROVEXA | System Architecture for Founders">
-    <meta name="description" content="Stop renting your reputation. Rovexa builds premium brand identities and n8n automation systems that replace manual work. The operating system for modern business.">
+    <meta name="description"
+        content="Stop renting your reputation. Rovexa builds premium brand identities and n8n automation systems that replace manual work. The operating system for modern business.">
     <meta name="author" content="Divyanshu">
-    <meta name="keywords" content="Rovexa, Business Automation, n8n expert India, Premium Branding Agency, System Architecture, D2C Growth, Lead Gen Automation">
+    <meta name="keywords"
+        content="Rovexa, Business Automation, n8n expert India, Premium Branding Agency, System Architecture, D2C Growth, Lead Gen Automation">
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rovexa.space/" />
     <meta property="og:title" content="ROVEXA | System Architecture for Founders" />
-    <meta property="og:description" content="Stop renting your reputation. We build automated business engines and luxury brand identities for high-growth founders." />
+    <meta property="og:description"
+        content="Stop renting your reputation. We build automated business engines and luxury brand identities for high-growth founders." />
     <meta property="og:image" content="https://rovexa.space/og-luxury-card.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -26,7 +30,7 @@
     <link rel="icon" href="https://rovexa.space/favicon.ico" sizes="any">
 
     <link rel="icon" type="image/png" href="https://rovexa.space/favicon.png">
-    
+
     <link rel="apple-touch-icon" href="https://rovexa.space/favicon.png">
 
     <meta name="msapplication-TileColor" content="#da532c">
@@ -34,7 +38,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -43,18 +49,18 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
 
     <script>
-      // Firebase Config
-      const firebaseConfig = {
-        apiKey: "AIzaSyDNH5oMSxF_M51qhbkXHHz19D8YOy1rqik",
-        authDomain: "rovexa-49aa5.firebaseapp.com",
-        projectId: "rovexa-49aa5",
-        storageBucket: "rovexa-49aa5.firebasestorage.app",
-        messagingSenderId: "1045479597194",
-        appId: "1:1045479597194:web:724876ef043e6c2072b973",
-        measurementId: "G-D907G5GW02"
-      };
-      firebase.initializeApp(firebaseConfig);
-      const db = firebase.firestore();
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNH5oMSxF_M51qhbkXHHz19D8YOy1rqik",
+            authDomain: "rovexa-49aa5.firebaseapp.com",
+            projectId: "rovexa-49aa5",
+            storageBucket: "rovexa-49aa5.firebasestorage.app",
+            messagingSenderId: "1045479597194",
+            appId: "1:1045479597194:web:724876ef043e6c2072b973",
+            measurementId: "G-D907G5GW02"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
     </script>
 
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -79,7 +85,7 @@
             }
         }
     </script>
-    
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -114,48 +120,164 @@
     }
     </script>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
     <style>
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+
         body {
-            background-color: #F0F2F5;
+            background-color: #F4F5ED;
+            /* Slightly warmer off-white for premium feel */
             color: #1A1A1A;
             overflow-x: hidden;
-            cursor: crosshair; 
+            cursor: default;
+            /* Changed from crosshair for better UX */
         }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F4F5ED; }
-        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
-        .text-reveal-line { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
-        .char { transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .loader-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1A1A1A; z-index: 9999; display: flex; justify-content: center; align-items: center; color: #B2F838; }
-        ::selection { background: #1A1A1A; color: #B2F838; }
-        #canvas-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-        #integrity-modal { transition: opacity 0.5s ease-in-out; }
-        .cta-pulse { animation: pulse 2s infinite; }
+
+        /* Premium Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(26, 26, 26, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(26, 26, 26, 0.8);
+        }
+
+        .text-reveal-line {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .char {
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1A1A1A;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #B2F838;
+        }
+
+        ::selection {
+            background: #1A1A1A;
+            color: #B2F838;
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Lower opacity for subtlety */
+        #integrity-modal {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Refined Pulse */
+        .cta-pulse {
+            animation: pulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(178, 248, 56, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(178, 248, 56, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(178, 248, 56, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(178, 248, 56, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(178, 248, 56, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(178, 248, 56, 0);
+            }
         }
-        #testimonial-bubble { transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; }
-        .nav-scrolled { background-color: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); }
+
+        #testimonial-bubble {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+        }
+
+        .nav-scrolled {
+            background-color: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Smooth Reveal Class */
+        .reveal-up {
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- TESTIMONIAL BUBBLE -->
-    <div id="testimonial-bubble" class="hidden fixed bottom-8 right-8 w-80 bg-rovexa-black text-rovexa-bg p-5 rounded-lg shadow-2xl transform translate-y-16 opacity-0 z-50">
+    <div id="testimonial-bubble"
+        class="hidden fixed bottom-8 right-8 w-80 bg-rovexa-black text-rovexa-bg p-5 rounded-lg shadow-2xl transform translate-y-16 opacity-0 z-50">
         <button id="close-bubble" class="absolute top-2 right-3 text-rovexa-grey hover:text-white">&times;</button>
         <p id="testimonial-text" class="font-mono text-sm"></p>
     </div>
 
     <!-- SYSTEM INTEGRITY MODAL -->
-    <div id="integrity-modal" class="hidden fixed inset-0 bg-rovexa-black bg-opacity-90 z-[9999] flex justify-center items-center text-rovexa-bg p-4 opacity-0">
+    <div id="integrity-modal"
+        class="hidden fixed inset-0 bg-rovexa-black bg-opacity-90 z-[9999] flex justify-center items-center text-rovexa-bg p-4 opacity-0">
         <div class="w-full max-w-2xl text-center font-mono">
             <h2 id="modal-title" class="text-3xl md:text-5xl font-bold text-rovexa-green mb-4"></h2>
             <p id="modal-message" class="text-lg md:text-xl mb-8"></p>
             <div class="flex justify-center gap-4">
-                <button id="modal-action-btn" class="bg-rovexa-green text-rovexa-black px-8 py-3 font-bold hover:bg-white transition-colors">INITIATE AUDIT</button>
-                <button id="modal-close-btn" class="border border-rovexa-grey text-rovexa-grey px-8 py-3 font-bold hover:bg-rovexa-grey hover:text-rovexa-black transition-colors">CONTINUE MONITORING</button>
+                <button id="modal-action-btn"
+                    class="bg-rovexa-green text-rovexa-black px-8 py-3 font-bold hover:bg-white transition-colors">INITIATE
+                    AUDIT</button>
+                <button id="modal-close-btn"
+                    class="border border-rovexa-grey text-rovexa-grey px-8 py-3 font-bold hover:bg-rovexa-grey hover:text-rovexa-black transition-colors">CONTINUE
+                    MONITORING</button>
             </div>
         </div>
     </div>
@@ -172,48 +294,60 @@
     </div>
 
     <!-- NAVIGATION -->
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] border-b bg-transparent py-8 border-transparent text-rovexa-black">
+    <nav id="main-nav"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] border-b bg-transparent py-8 border-transparent text-rovexa-black">
         <!-- HUD Scroll Tracker -->
-        <div id="scroll-tracker" class="absolute bottom-[-1px] left-0 h-[2px] bg-rovexa-green transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(178,248,56,0.5)]" style="width: 0%; opacity: 0;"></div>
+        <div id="scroll-tracker"
+            class="absolute bottom-[-1px] left-0 h-[2px] bg-rovexa-green transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(178,248,56,0.5)]"
+            style="width: 0%; opacity: 0;"></div>
 
         <div class="w-full px-6 md:px-12 relative flex items-center h-8">
             <!-- LOGO - Slides to center on scroll -->
-            <div id="nav-logo" class="font-bold tracking-tighter text-2xl md:text-3xl transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] absolute top-1/2 -translate-y-1/2 left-6 translate-x-0 scale-100">
+            <div id="nav-logo"
+                class="font-bold tracking-tighter text-2xl md:text-3xl transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] absolute top-1/2 -translate-y-1/2 left-6 translate-x-0 scale-100">
                 ROVEXA<span class="text-rovexa-green">.</span>
             </div>
 
             <!-- Desktop Menu - Fades out on scroll to clear noise -->
-            <div id="desktop-menu" class="hidden md:flex gap-8 font-mono text-xs items-center ml-auto transition-all duration-500 opacity-100 translate-x-0">
+            <div id="desktop-menu"
+                class="hidden md:flex gap-8 font-mono text-xs items-center ml-auto transition-all duration-500 opacity-100 translate-x-0">
                 <a href="#what-we-do" class="hover:text-rovexa-green transition-colors">// CAPABILITIES</a>
                 <a href="#philosophy" class="hover:text-rovexa-green transition-colors">// PHILOSOPHY</a>
                 <a href="#contact" class="hover:text-rovexa-green transition-colors">// EXECUTE</a>
-                <a href="#diagnosis-tool" class="font-mono text-xs border border-current px-4 py-2 hover:bg-rovexa-green hover:text-rovexa-black hover:border-rovexa-green transition-all duration-300">
+                <a href="#diagnosis-tool"
+                    class="font-mono text-xs border border-current px-4 py-2 hover:bg-rovexa-green hover:text-rovexa-black hover:border-rovexa-green transition-all duration-300">
                     GET AUDIT &gt;
                 </a>
             </div>
 
             <!-- Toggle Button - Appears on Mobile OR when Scrolled on Desktop -->
-            <button id="menu-toggle" class="font-mono text-xs border border-current px-3 py-2 active:bg-rovexa-green active:text-rovexa-black transition-all duration-300 ml-auto z-50 hover:bg-white/10 md:hidden">
+            <button id="menu-toggle"
+                class="font-mono text-xs border border-current px-3 py-2 active:bg-rovexa-green active:text-rovexa-black transition-all duration-300 ml-auto z-50 hover:bg-white/10 md:hidden">
                 // MENU
             </button>
         </div>
     </nav>
 
     <!-- Full Screen Protocol Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-[#0f0f0f] z-40 flex flex-col justify-center items-center transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] -translate-y-full">
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-[#0f0f0f] z-40 flex flex-col justify-center items-center transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] -translate-y-full">
         <div class="flex flex-col gap-8 text-center">
             <div class="font-mono text-rovexa-green text-xs mb-4 opacity-50">// NAVIGATION PROTOCOL</div>
-            
-            <a href="#what-we-do" class="menu-link text-4xl md:text-6xl font-bold text-white hover:text-rovexa-green transition-colors tracking-tighter">
+
+            <a href="#what-we-do"
+                class="menu-link text-4xl md:text-6xl font-bold text-white hover:text-rovexa-green transition-colors tracking-tighter">
                 CAPABILITIES
             </a>
-            <a href="#philosophy" class="menu-link text-4xl md:text-6xl font-bold text-white hover:text-rovexa-green transition-colors tracking-tighter">
+            <a href="#philosophy"
+                class="menu-link text-4xl md:text-6xl font-bold text-white hover:text-rovexa-green transition-colors tracking-tighter">
                 PHILOSOPHY
             </a>
-            <a href="#services" class="menu-link text-4xl md:text-6xl font-bold text-white hover:text-rovexa-green transition-colors tracking-tighter">
+            <a href="#services"
+                class="menu-link text-4xl md:text-6xl font-bold text-white hover:text-rovexa-green transition-colors tracking-tighter">
                 SERVICES
             </a>
-            <a href="#diagnosis-tool" class="menu-link text-4xl md:text-6xl font-bold text-rovexa-green hover:text-white transition-colors tracking-tighter mt-8">
+            <a href="#diagnosis-tool"
+                class="menu-link text-4xl md:text-6xl font-bold text-rovexa-green hover:text-white transition-colors tracking-tighter mt-8">
                 INITIATE AUDIT
             </a>
 
@@ -230,22 +364,34 @@
             <div class="font-mono text-xs md:text-sm mb-4 text-rovexa-grey overflow-hidden">
                 <div class="reveal-text">// ICP: "ARYAN" DETECTED</div>
             </div>
-            
-            <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tighter mb-8 text-rovexa-black">
+
+            <h1
+                class="text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tighter mb-8 text-rovexa-black">
                 <div class="overflow-hidden"><span class="reveal-text block">GROW</span></div>
                 <div class="overflow-hidden"><span class="reveal-text block">YOUR BUSINESS.</span></div>
             </h1>
 
             <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mt-8">
-                <p class="font-mono text-sm md:text-base max-w-md text-rovexa-black font-medium reveal-text-delay border-l-2 border-rovexa-green pl-4">
+                <p
+                    class="font-mono text-sm md:text-base max-w-md text-rovexa-black font-medium reveal-text-delay border-l-2 border-rovexa-green pl-4">
                     // We turn chaotic businesses into automated machines.
                     <br>
                     // Premium Identity + Workflow Automation.
                 </p>
-                <button class="group relative px-8 py-4 bg-rovexa-black text-white font-bold text-lg overflow-hidden transition-all hover:scale-105 reveal-text-delay shadow-2xl">
-                    <span class="relative z-10 group-hover:text-rovexa-black transition-colors">START THE MACHINE</span>
-                    <div class="absolute inset-0 bg-rovexa-green transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></div>
-                </button>
+                <div class="flex flex-col md:flex-row gap-4 items-start md:items-center">
+                    <button id="hero-install-trigger"
+                        class="group relative px-8 py-4 bg-rovexa-black text-white font-bold text-lg overflow-hidden transition-all hover:scale-105 reveal-text-delay shadow-2xl">
+                        <span class="relative z-10 group-hover:text-rovexa-black transition-colors">START THE MACHINE</span>
+                        <div
+                            class="absolute inset-0 bg-rovexa-green transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out">
+                        </div>
+                    </button>
+                    <!-- NEW CTA BUTTON ADDED HERE -->
+                    <button id="wizard-trigger-v2"
+                        class="font-mono text-xs md:text-sm border border-rovexa-black text-rovexa-black px-6 py-4 hover:bg-rovexa-black hover:text-white transition-all duration-300 reveal-text-delay uppercase tracking-wider flex items-center gap-2">
+                        <span>> INSTALLATION WIZARD_V2</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -259,33 +405,123 @@
         </div>
     </section>
 
-    <!-- NEW SECTION: CAPABILITIES (The Explainer) -->
-    <section id="what-we-do" class="py-20 px-6 md:px-20 bg-rovexa-bg border-b border-rovexa-black/10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <!-- Col 1 -->
-            <div class="flex flex-col gap-4">
-                <div class="w-12 h-12 bg-rovexa-black text-rovexa-green flex items-center justify-center font-bold text-xl mb-2">01</div>
-                <h3 class="text-2xl font-bold">WE BUILD YOUR FACE.</h3>
-                <p class="font-mono text-sm text-gray-600 leading-relaxed">
-                    Generic logos kill pricing power. We design <span class="bg-rovexa-green/30 px-1">luxury brand identities</span>, websites, and visuals that make you look like a market leader instantly.
-                </p>
+    <!-- NEW SECTION: CAPABILITIES (Sticky Card Stacking) -->
+    <section id="what-we-do" class="bg-rovexa-bg relative pb-40">
+
+        <!-- Section Header -->
+        <div class="px-6 md:px-20 py-20">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">CAPABILITIES<span class="text-rovexa-green">.</span></h2>
+            <div class="w-full h-[1px] bg-rovexa-black/20"></div>
+        </div>
+
+        <!-- Stacking Cards Container -->
+        <div class="flex flex-col items-center px-6 md:px-20">
+
+            <!-- Card 01: IDENTITY (CHARCOAL) -->
+            <div
+                class="stack-card sticky top-[15vh] w-full max-w-5xl min-h-[50vh] bg-rovexa-black text-rovexa-bg rounded-3xl overflow-hidden border border-white/10 shadow-2xl mb-20 origin-top">
+                <div class="flex flex-col h-full relative p-8 md:p-16">
+                    <!-- Background Watermark -->
+                    <div class="absolute right-[-5%] bottom-[-10%] font-bold text-[20vw] leading-none text-white opacity-[0.03] select-none pointer-events-none">
+                        01
+                    </div>
+                    
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="font-mono text-xs text-rovexa-green border border-rovexa-green inline-block px-3 py-1 rounded-full">
+                            // 01. FACE
+                        </div>
+                        <div class="hidden md:block w-3 h-3 bg-rovexa-green rounded-full animate-pulse"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row justify-between items-end gap-10 mt-auto">
+                        <div class="max-w-2xl">
+                            <h3 class="text-5xl md:text-7xl font-bold leading-[0.9] mb-8 tracking-tight">
+                                WE BUILD<br>
+                                <span class="text-white/50">YOUR FACE.</span>
+                            </h3>
+                            <p class="font-mono text-sm md:text-base text-gray-400 leading-relaxed max-w-lg border-l border-rovexa-green pl-6">
+                                Generic logos kill pricing power. We design luxury brand identities, websites, and visuals that make you look like a market leader instantly.
+                            </p>
+                        </div>
+                        
+                        <div class="font-mono text-xs text-gray-500 text-right">
+                            [ MODULE: VISUAL_DESIGN ]<br>
+                            STATUS: <span class="text-rovexa-green">DEPLOYED</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Col 2 -->
-            <div class="flex flex-col gap-4">
-                <div class="w-12 h-12 bg-rovexa-black text-rovexa-green flex items-center justify-center font-bold text-xl mb-2">02</div>
-                <h3 class="text-2xl font-bold">WE BUILD YOUR BRAIN.</h3>
-                <p class="font-mono text-sm text-gray-600 leading-relaxed">
-                    Manual work is slow. We build custom <span class="bg-rovexa-green/30 px-1">n8n automations & CRM systems</span> that handle leads, sales, and operations while you sleep.
-                </p>
+
+            <!-- Card 02: AUTOMATION (MECCA GREEN) -->
+            <div
+                class="stack-card sticky top-[15vh] w-full max-w-5xl min-h-[50vh] bg-[#B2F838] text-rovexa-black rounded-3xl overflow-hidden border border-black/10 shadow-2xl mb-20 origin-top">
+                <div class="flex flex-col h-full relative p-8 md:p-16">
+                    <!-- Background Watermark -->
+                    <div class="absolute right-[-5%] bottom-[-10%] font-bold text-[20vw] leading-none text-black opacity-[0.05] select-none pointer-events-none">
+                        02
+                    </div>
+
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="font-mono text-xs text-rovexa-black border border-rovexa-black inline-block px-3 py-1 rounded-full">
+                            // 02. BRAIN
+                        </div>
+                        <div class="hidden md:block w-3 h-3 bg-rovexa-black rounded-full animate-pulse"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row justify-between items-end gap-10 mt-auto">
+                        <div class="max-w-2xl">
+                            <h3 class="text-5xl md:text-7xl font-bold leading-[0.9] mb-8 tracking-tight">
+                                WE BUILD<br>
+                                <span class="opacity-40">YOUR BRAIN.</span>
+                            </h3>
+                            <p class="font-mono text-sm md:text-base text-rovexa-black/70 leading-relaxed max-w-lg border-l border-rovexa-black pl-6 font-medium">
+                                Manual work is slow. We build custom n8n automations & CRM systems that handle leads, sales, and operations while you sleep.
+                            </p>
+                        </div>
+
+                        <div class="font-mono text-xs text-black/60 text-right">
+                            [ MODULE: SYSTEM_OPS ]<br>
+                            STATUS: <span class="text-black font-bold">OPTIMIZED</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Col 3 -->
-            <div class="flex flex-col gap-4">
-                <div class="w-12 h-12 bg-rovexa-black text-rovexa-green flex items-center justify-center font-bold text-xl mb-2">03</div>
-                <h3 class="text-2xl font-bold">WE BUILD YOUR VOICE.</h3>
-                <p class="font-mono text-sm text-gray-600 leading-relaxed">
-                    Posting randomly doesn't work. We run your <span class="bg-rovexa-green/30 px-1">Social Media & Content Systems</span> to ensure your brand is seen by the people who matter.
-                </p>
+
+            <!-- Card 03: VOICE (VAPOUR OFF WHITE) -->
+            <div
+                class="stack-card sticky top-[15vh] w-full max-w-5xl min-h-[50vh] bg-[#F4F5ED] text-rovexa-black rounded-3xl overflow-hidden border border-black/10 shadow-2xl mb-20 origin-top">
+                <div class="flex flex-col h-full relative p-8 md:p-16">
+                    <!-- Background Watermark -->
+                    <div class="absolute right-[-5%] bottom-[-10%] font-bold text-[20vw] leading-none text-black opacity-[0.03] select-none pointer-events-none">
+                        03
+                    </div>
+
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="font-mono text-xs text-gray-500 border border-gray-400 inline-block px-3 py-1 rounded-full">
+                            // 03. VOICE
+                        </div>
+                        <div class="hidden md:block w-3 h-3 bg-rovexa-black rounded-full animate-pulse"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row justify-between items-end gap-10 mt-auto">
+                        <div class="max-w-2xl">
+                            <h3 class="text-5xl md:text-7xl font-bold leading-[0.9] mb-8 tracking-tight">
+                                WE BUILD<br>
+                                <span class="text-gray-400">YOUR VOICE.</span>
+                            </h3>
+                            <p class="font-mono text-sm md:text-base text-gray-600 leading-relaxed max-w-lg border-l border-gray-400 pl-6">
+                                Posting randomly doesn't work. We run your Social Media & Content Systems to ensure your brand is seen by the people who matter.
+                            </p>
+                        </div>
+
+                        <div class="font-mono text-xs text-gray-400 text-right">
+                            [ MODULE: AMPLIFICATION ]<br>
+                            STATUS: <span class="text-rovexa-black">ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -302,15 +538,20 @@
                     MANUAL DATA ENTRY IS <span class="text-rovexa-green">SELF-SABOTAGE.</span>
                 </h3>
                 <p class="text-lg text-gray-400 font-light leading-relaxed max-w-lg">
-                    You think you are hustling. But spending 4 hours fixing Excel sheets isn't leadership. It's an expensive internship.
+                    You think you are hustling. But spending 4 hours fixing Excel sheets isn't leadership. It's an
+                    expensive internship.
                     <br><br>
                     We treat manual labor as a failure of intelligence. If it can be automated, it must be.
                 </p>
             </div>
-            <div class="relative h-[400px] w-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden group">
+            <div
+                class="relative h-[400px] w-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden group">
                 <!-- Abstract "Hamster Wheel" Rep -->
-                <div class="w-48 h-48 border-2 border-dashed border-white/30 rounded-full animate-spin-slow group-hover:border-rovexa-green transition-colors duration-500"></div>
-                <div class="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity text-rovexa-green">
+                <div
+                    class="w-48 h-48 border-2 border-dashed border-white/30 rounded-full animate-spin-slow group-hover:border-rovexa-green transition-colors duration-500">
+                </div>
+                <div
+                    class="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-widest opacity-0 group-hover:opacity-100 transition-opacity text-rovexa-green">
                     // BREAK THE LOOP
                 </div>
             </div>
@@ -332,7 +573,8 @@
             <h3 class="text-2xl font-bold mb-4">YOUR EFFICIENCY SCORE:</h3>
             <div id="score" class="text-8xl font-bold text-rovexa-green mb-8"></div>
             <p id="analysis" class="font-mono text-lg text-gray-700 mb-12"></p>
-            <button id="schedule-upgrade-trigger" class="inline-block bg-rovexa-green text-rovexa-black px-12 py-5 font-bold text-xl hover:bg-rovexa-black hover:text-rovexa-green transition-colors duration-300">
+            <button id="schedule-upgrade-trigger"
+                class="inline-block bg-rovexa-green text-rovexa-black px-12 py-5 font-bold text-xl hover:bg-rovexa-black hover:text-rovexa-green transition-colors duration-300">
                 SCHEDULE YOUR UPGRADE
             </button>
         </div>
@@ -348,9 +590,12 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Service Card 1 -->
-            <div class="group border border-rovexa-black p-10 hover:bg-rovexa-black hover:text-white transition-all duration-500 cursor-none service-card">
+            <div
+                class="group border border-rovexa-black p-10 hover:bg-rovexa-black hover:text-white transition-all duration-500 cursor-none service-card">
                 <div class="flex justify-between items-start mb-12">
-                    <span class="font-mono text-xs border border-current px-2 py-1 rounded-full group-hover:border-rovexa-green group-hover:text-rovexa-green">ONE-TIME SETUP</span>
+                    <span
+                        class="font-mono text-xs border border-current px-2 py-1 rounded-full group-hover:border-rovexa-green group-hover:text-rovexa-green">ONE-TIME
+                        SETUP</span>
                     <span class="text-4xl font-light opacity-50">01</span>
                 </div>
                 <h3 class="text-5xl font-bold mb-4">GROWTH</h3>
@@ -362,7 +607,9 @@
                     // CRM Integration<br>
                     // n8n Automation Workflow
                 </p>
-                <div class="w-full h-[1px] bg-current mb-8 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                <div
+                    class="w-full h-[1px] bg-current mb-8 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
+                </div>
                 <div class="flex items-center gap-4 group-hover:translate-x-4 transition-transform duration-300">
                     <span class="font-bold text-lg group-hover:text-rovexa-green">BUILD THE SYSTEM</span>
                     <span class="text-xl">→</span>
@@ -370,9 +617,12 @@
             </div>
 
             <!-- Service Card 2 -->
-            <div class="group border border-rovexa-black p-10 hover:bg-rovexa-black hover:text-white transition-all duration-500 cursor-none service-card">
+            <div
+                class="group border border-rovexa-black p-10 hover:bg-rovexa-black hover:text-white transition-all duration-500 cursor-none service-card">
                 <div class="flex justify-between items-start mb-12">
-                    <span class="font-mono text-xs border border-current px-2 py-1 rounded-full group-hover:border-rovexa-green group-hover:text-rovexa-green">RECURRING GROWTH</span>
+                    <span
+                        class="font-mono text-xs border border-current px-2 py-1 rounded-full group-hover:border-rovexa-green group-hover:text-rovexa-green">RECURRING
+                        GROWTH</span>
                     <span class="text-4xl font-light opacity-50">02</span>
                 </div>
                 <h3 class="text-5xl font-bold mb-4">FLOW</h3>
@@ -384,7 +634,9 @@
                     // Automation Maintenance<br>
                     // Revenue Optimization
                 </p>
-                <div class="w-full h-[1px] bg-current mb-8 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                <div
+                    class="w-full h-[1px] bg-current mb-8 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
+                </div>
                 <div class="flex items-center gap-4 group-hover:translate-x-4 transition-transform duration-300">
                     <span class="font-bold text-lg group-hover:text-rovexa-green">MAINTAIN VELOCITY</span>
                     <span class="text-xl">→</span>
@@ -397,21 +649,27 @@
     <section class="py-32 px-6 md:px-20 bg-rovexa-black text-rovexa-bg relative overflow-hidden">
         <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
             <!-- CSS Pattern representing the Panther's mesh -->
-            <div style="background-image: radial-gradient(#B2F838 1px, transparent 1px); background-size: 40px 40px; width: 100%; height: 100%;"></div>
+            <div
+                style="background-image: radial-gradient(#B2F838 1px, transparent 1px); background-size: 40px 40px; width: 100%; height: 100%;">
+            </div>
         </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-block border border-rovexa-green text-rovexa-green px-4 py-1 font-mono text-xs mb-8 rounded-full">
+            <div
+                class="inline-block border border-rovexa-green text-rovexa-green px-4 py-1 font-mono text-xs mb-8 rounded-full">
                 // AGENT: PANTHER PROTOCOL
             </div>
             <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8">
                 SILENT EXECUTION.<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">VELOCITY UNLIMITED.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">VELOCITY
+                    UNLIMITED.</span>
             </h2>
             <p class="font-mono text-sm md:text-base text-gray-400 max-w-xl mx-auto mb-12">
-                We don't just design logos. We design the exit strategy. Build a machine that makes money while you sleep.
+                We don't just design logos. We design the exit strategy. Build a machine that makes money while you
+                sleep.
             </p>
-            <button id="install-system-trigger" class="inline-block bg-rovexa-green text-rovexa-black px-12 py-5 font-bold text-xl hover:bg-white transition-colors duration-300">
+            <button id="install-system-trigger"
+                class="inline-block bg-rovexa-green text-rovexa-black px-12 py-5 font-bold text-xl hover:bg-white transition-colors duration-300">
                 INSTALL THE SYSTEM
             </button>
         </div>
@@ -421,15 +679,19 @@
     <footer id="contact" class="bg-rovexa-bg text-rovexa-black pt-20 pb-10 px-6 md:px-20 border-t border-rovexa-black">
         <div class="flex flex-col md:flex-row justify-between items-start mb-20">
             <div>
-                <h2 class="text-[12vw] font-bold leading-none tracking-tighter">ROVEXA<span class="text-rovexa-green">.</span></h2>
+                <h2 class="text-[12vw] font-bold leading-none tracking-tighter">ROVEXA<span
+                        class="text-rovexa-green">.</span></h2>
             </div>
             <div class="flex flex-col gap-4 font-mono text-sm text-right mt-10 md:mt-0">
-                <a href="https://www.instagram.com/rovexa.ig/" class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">INSTAGRAM</a>
-                <a href="https://www.linkedin.com/in/divyanshuyeah/" class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">LINKEDIN</a>
-                <a href="mailto:rovexa.studio@gmail.com" class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">ROVEXA.STUDIO@GMAIL.COM</a>
+                <a href="https://www.instagram.com/rovexa.ig/"
+                    class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">INSTAGRAM</a>
+                <a href="https://www.linkedin.com/in/divyanshuyeah/"
+                    class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">LINKEDIN</a>
+                <a href="mailto:rovexa.studio@gmail.com"
+                    class="hover:text-rovexa-green hover:underline decoration-rovexa-green underline-offset-4">ROVEXA.STUDIO@GMAIL.COM</a>
             </div>
         </div>
-        
+
         <div class="flex justify-between items-end border-t border-rovexa-black/10 pt-8 font-mono text-xs opacity-60">
             <div>
                 // SYSTEM ARCHITECTS<br>
@@ -444,45 +706,84 @@
     <div id="install-system-container"></div>
 
     <script>
-        // --- 1. PRELOADER ---
+        // --- 1. PRELOADER (High Priority) ---
         window.addEventListener('load', () => {
             const tl = gsap.timeline();
-            
+
             tl.to('.loader-bar', {
                 width: '100%',
-                duration: 1.5,
-                ease: 'power2.inOut'
+                duration: 1.2,
+                ease: 'expo.inOut'
             })
-            .to('.loader-overlay', {
-                y: '-100%',
-                duration: 0.8,
-                ease: 'power4.inOut',
-                delay: 0.2
-            })
-            .from('.reveal-text', {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power3.out'
-            }, "-=0.4")
-            .from('.reveal-text-delay', {
-                y: 20,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power3.out'
-            }, "-=0.6");
+                .to('.loader-overlay', {
+                    y: '-100%',
+                    duration: 1,
+                    ease: 'power4.inOut',
+                    delay: 0.1
+                })
+                .from('.reveal-text', {
+                    y: 100,
+                    opacity: 0,
+                    duration: 1.2,
+                    stagger: 0.1,
+                    ease: 'power3.out'
+                }, "-=0.6")
+                .from('.reveal-text-delay', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 1.2,
+                    stagger: 0.1,
+                    ease: 'power3.out'
+                }, "-=0.8");
         });
+
+        // --- 0. LENIS SMOOTH SCROLL (Safe Init) ---
+        const initLenis = () => {
+            try {
+                if (typeof Lenis === 'undefined') {
+                    console.warn('Lenis not loaded');
+                    return;
+                }
+
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    gestureDirection: 'vertical',
+                    smooth: true,
+                    mouseMultiplier: 1,
+                    smoothTouch: false,
+                    touchMultiplier: 2,
+                });
+
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+
+                requestAnimationFrame(raf);
+
+                // Integrate with GSAP
+                if (typeof ScrollTrigger !== 'undefined') {
+                    lenis.on('scroll', ScrollTrigger.update);
+                    gsap.ticker.add((time) => {
+                        lenis.raf(time * 1000);
+                    });
+                    gsap.ticker.lagSmoothing(0);
+                }
+            } catch (e) {
+                console.error("Lenis init failed:", e);
+            }
+        };
+
+        // Defer Lenis slightly to ensure scripts are parsed
+        setTimeout(initLenis, 100);
 
         // --- 2. THREE.JS "PLEXUS NETWORK" VISUALIZATION ---
         const initThreeJS = () => {
             const container = document.getElementById('canvas-container');
-            if (!container) {
-                console.error("Canvas container not found.");
-                return;
-            }
-            
+            if (!container) return;
+
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
             camera.position.z = 5;
@@ -498,20 +799,28 @@
             };
 
             // Particles
-            const particleCount = 100;
+            const particleCount = 80; // Reduced for cleaner look
             const particles = new THREE.BufferGeometry();
             const posArray = new Float32Array(particleCount * 3);
             const velocities = [];
+            const originalPos = []; // To return to
 
             for (let i = 0; i < particleCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-                velocities.push((Math.random() - 0.5) * 0.01);
+                const x = (Math.random() - 0.5) * 12; // Wider spread
+                const y = (Math.random() - 0.5) * 10;
+                const z = (Math.random() - 0.5) * 5;
+
+                posArray[i] = x;
+                originalPos.push(x);
+                velocities.push((Math.random() - 0.5) * 0.005); // Slower, more elegant
             }
             particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
+
             const particleMaterial = new THREE.PointsMaterial({
-                size: 0.05,
+                size: 0.04,
                 color: colors.black,
+                transparent: true,
+                opacity: 0.6
             });
             const particleMesh = new THREE.Points(particles, particleMaterial);
             scene.add(particleMesh);
@@ -520,56 +829,55 @@
             const lineMaterial = new THREE.LineBasicMaterial({
                 color: colors.black,
                 transparent: true,
-                opacity: 0.1
+                opacity: 0.08 // Very subtle
             });
             const lineGeometry = new THREE.BufferGeometry();
             const lineMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
             scene.add(lineMesh);
 
             // Mouse Interaction
-            const mouse = new THREE.Vector2(-100, -100); // Start off-screen
+            const mouse = new THREE.Vector2(-100, -100);
+            const targetMouse = new THREE.Vector2(-100, -100);
+
             document.addEventListener('mousemove', (event) => {
                 const rect = container.getBoundingClientRect();
-                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-            });
-             document.addEventListener('mouseleave', () => {
-                mouse.x = -100;
-                mouse.y = -100;
+                targetMouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                targetMouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
             });
 
+            const clock = new THREE.Clock();
 
             const animate = () => {
                 requestAnimationFrame(animate);
+                const elapsedTime = clock.getElapsedTime();
+
+                // Smooth mouse interpolation
+                mouse.x += (targetMouse.x - mouse.x) * 0.05;
+                mouse.y += (targetMouse.y - mouse.y) * 0.05;
+
                 const positions = particleMesh.geometry.attributes.position.array;
                 const linePositions = [];
-                
-                let interactionRadius = 2;
+
+                let interactionRadius = 2.5;
 
                 for (let i = 0; i < particleCount; i++) {
                     const i3 = i * 3;
-                    
-                    // Update velocity
-                    positions[i3] += velocities[i3];
-                    positions[i3 + 1] += velocities[i3 + 1];
-                    positions[i3 + 2] += velocities[i3 + 2];
 
-                    // Boundary check
-                    if (positions[i3] > 5 || positions[i3] < -5) velocities[i3] *= -1;
-                    if (positions[i3 + 1] > 5 || positions[i3 + 1] < -5) velocities[i3 + 1] *= -1;
-                    if (positions[i3 + 2] > 5 || positions[i3 + 2] < -5) velocities[i3 + 2] *= -1;
+                    // Natural Movement (Gentle Sine Waves)
+                    positions[i3] += Math.sin(elapsedTime * 0.2 + positions[i3 + 1]) * 0.002;
+                    positions[i3 + 1] += Math.cos(elapsedTime * 0.3 + positions[i3]) * 0.002;
 
-                    // Mouse interaction
-                    const mouse3D = new THREE.Vector3(mouse.x * 5, mouse.y * 5, 0);
-                    const particlePos = new THREE.Vector3(positions[i3], positions[i3+1], positions[i3+2]);
+                    // Mouse interaction (Repel)
+                    const mouse3D = new THREE.Vector3(mouse.x * 6, mouse.y * 6, 0);
+                    const particlePos = new THREE.Vector3(positions[i3], positions[i3 + 1], positions[i3 + 2]);
                     const distanceToMouse = particlePos.distanceTo(mouse3D);
 
-                    if(distanceToMouse < interactionRadius) {
-                        const repel = particlePos.sub(mouse3D).normalize().multiplyScalar(0.05);
-                        velocities[i3] += repel.x;
-                        velocities[i3+1] += repel.y;
+                    if (distanceToMouse < interactionRadius) {
+                        const force = (interactionRadius - distanceToMouse) / interactionRadius;
+                        const repel = particlePos.sub(mouse3D).normalize().multiplyScalar(force * 0.05);
+                        positions[i3] += repel.x;
+                        positions[i3 + 1] += repel.y;
                     }
-
 
                     // Check distance to other particles for lines
                     for (let j = i + 1; j < particleCount; j++) {
@@ -579,7 +887,7 @@
                         const dz = positions[i3 + 2] - positions[j3 + 2];
                         const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-                        if (distance < 1.5) {
+                        if (distance < 1.8) {
                             linePositions.push(positions[i3], positions[i3 + 1], positions[i3 + 2]);
                             linePositions.push(positions[j3], positions[j3 + 1], positions[j3 + 2]);
                         }
@@ -589,6 +897,9 @@
                 lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
                 particleMesh.geometry.attributes.position.needsUpdate = true;
 
+                // Subtle Rotation of entire system
+                scene.rotation.y = elapsedTime * 0.05;
+
                 renderer.render(scene, camera);
             };
 
@@ -596,6 +907,7 @@
 
             // Resize Handler
             const onResize = () => {
+                // Throttle resize
                 const width = container.offsetWidth;
                 const height = container.offsetHeight;
                 camera.aspect = width / height;
@@ -603,9 +915,9 @@
                 renderer.setSize(width, height);
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             };
-            
+
             window.addEventListener('resize', onResize);
-            onResize(); // Initial call
+            onResize();
         };
 
         // Delay init to ensure container is sized correctly
@@ -620,116 +932,116 @@
             const analysisEl = document.getElementById('analysis');
 
             const questions = [
-    // --- 1. THE TIME AUDIT (Exposing Inefficiency) ---
-    {
-        question: "How many hours per week does your team spend on repetitive manual tasks?",
-        answers: [
-            { text: "0-2 Hours (Optimized)", value: 10 },
-            { text: "3-5 Hours (Some Drag)", value: 6 },
-            { text: "6-10 Hours (Significant Drag)", value: 3 },
-            { text: "10+ Hours (Critical Failure)", value: 0 }
-        ]
-    },
+                // --- 1. THE TIME AUDIT (Exposing Inefficiency) ---
+                {
+                    question: "How many hours per week does your team spend on repetitive manual tasks?",
+                    answers: [
+                        { text: "0-2 Hours (Optimized)", value: 10 },
+                        { text: "3-5 Hours (Some Drag)", value: 6 },
+                        { text: "6-10 Hours (Significant Drag)", value: 3 },
+                        { text: "10+ Hours (Critical Failure)", value: 0 }
+                    ]
+                },
 
-    // --- 2. THE SYSTEM HEALTH (Exposing Chaos) ---
-    {
-        question: "How would you describe your lead tracking and sales process?",
-        answers: [
-            { text: "Fully Automated CRM (No leaks)", value: 10 },
-            { text: "Managed in Spreadsheets (Manual)", value: 4 },
-            { text: "Sticky Notes & Memory (Risky)", value: 1 },
-            { text: "No Formal Process (Chaos)", value: 0 }
-        ]
-    },
+                // --- 2. THE SYSTEM HEALTH (Exposing Chaos) ---
+                {
+                    question: "How would you describe your lead tracking and sales process?",
+                    answers: [
+                        { text: "Fully Automated CRM (No leaks)", value: 10 },
+                        { text: "Managed in Spreadsheets (Manual)", value: 4 },
+                        { text: "Sticky Notes & Memory (Risky)", value: 1 },
+                        { text: "No Formal Process (Chaos)", value: 0 }
+                    ]
+                },
 
-    // --- 3. THE BRAND PERCEPTION (Exposing Low Value) ---
-    {
-        question: "Does your current brand identity allow you to charge premium prices?",
-        answers: [
-            { text: "Yes, we look more expensive than we are", value: 10 },
-            { text: "It's decent, but not 'Luxury'", value: 6 },
-            { text: "No, clients constantly negotiate", value: 2 },
-            { text: "We look like a budget option", value: 0 }
-        ]
-    },
+                // --- 3. THE BRAND PERCEPTION (Exposing Low Value) ---
+                {
+                    question: "Does your current brand identity allow you to charge premium prices?",
+                    answers: [
+                        { text: "Yes, we look more expensive than we are", value: 10 },
+                        { text: "It's decent, but not 'Luxury'", value: 6 },
+                        { text: "No, clients constantly negotiate", value: 2 },
+                        { text: "We look like a budget option", value: 0 }
+                    ]
+                },
 
-    // --- 4. THE VISIBILITY (Exposing Obscurity) ---
-    {
-        question: "How consistent is your social media and content output?",
-        answers: [
-            { text: "Daily, Systematized Output", value: 10 },
-            { text: "A few times a week (Manual)", value: 6 },
-            { text: "Whenever we find time (Sporadic)", value: 2 },
-            { text: "Radio silence / Ghost town", value: 0 }
-        ]
-    },
+                // --- 4. THE VISIBILITY (Exposing Obscurity) ---
+                {
+                    question: "How consistent is your social media and content output?",
+                    answers: [
+                        { text: "Daily, Systematized Output", value: 10 },
+                        { text: "A few times a week (Manual)", value: 6 },
+                        { text: "Whenever we find time (Sporadic)", value: 2 },
+                        { text: "Radio silence / Ghost town", value: 0 }
+                    ]
+                },
 
-    // --- 5. THE BOTTLENECK TEST (Attacking the Ego) ---
-    {
-        question: "What happens to the business if you step away for 14 days?",
-        answers: [
-            { text: "It grows. Systems run themselves.", value: 10 },
-            { text: "Stays flat. Team maintains baseline.", value: 6 },
-            { text: "Revenue dips. Fires start burning.", value: 2 },
-            { text: "Total collapse. I am the business.", value: 0 }
-        ]
-    },
+                // --- 5. THE BOTTLENECK TEST (Attacking the Ego) ---
+                {
+                    question: "What happens to the business if you step away for 14 days?",
+                    answers: [
+                        { text: "It grows. Systems run themselves.", value: 10 },
+                        { text: "Stays flat. Team maintains baseline.", value: 6 },
+                        { text: "Revenue dips. Fires start burning.", value: 2 },
+                        { text: "Total collapse. I am the business.", value: 0 }
+                    ]
+                },
 
-    // --- 6. THE SCALABILITY CHECK (Exposing Fragility) ---
-    {
-        question: "If you got 50 new clients tomorrow, what would happen?",
-        answers: [
-            { text: "We'd handle it instantly (Automated)", value: 10 },
-            { text: "We'd struggle but manage", value: 6 },
-            { text: "We'd break / Service would suffer", value: 2 },
-            { text: "We would have to stop selling", value: 0 }
-        ]
-    },
+                // --- 6. THE SCALABILITY CHECK (Exposing Fragility) ---
+                {
+                    question: "If you got 50 new clients tomorrow, what would happen?",
+                    answers: [
+                        { text: "We'd handle it instantly (Automated)", value: 10 },
+                        { text: "We'd struggle but manage", value: 6 },
+                        { text: "We'd break / Service would suffer", value: 2 },
+                        { text: "We would have to stop selling", value: 0 }
+                    ]
+                },
 
-    // --- 7. THE LEAKY BUCKET (Exposing Lost Revenue) ---
-    {
-        question: "How many follow-up attempts do your leads receive automatically?",
-        answers: [
-            { text: "5-7 Touchpoints (Omnichannel)", value: 10 },
-            { text: "1-2 Emails (Basic)", value: 5 },
-            { text: "None automatically", value: 2 },
-            { text: "I follow up when I remember", value: 0 }
-        ]
-    },
+                // --- 7. THE LEAKY BUCKET (Exposing Lost Revenue) ---
+                {
+                    question: "How many follow-up attempts do your leads receive automatically?",
+                    answers: [
+                        { text: "5-7 Touchpoints (Omnichannel)", value: 10 },
+                        { text: "1-2 Emails (Basic)", value: 5 },
+                        { text: "None automatically", value: 2 },
+                        { text: "I follow up when I remember", value: 0 }
+                    ]
+                },
 
-    // --- 8. THE DATA TRUTH (Exposing Blindness) ---
-    {
-        question: "Do you have a single dashboard that shows your exact revenue real-time?",
-        answers: [
-            { text: "Yes, instant visibility", value: 10 },
-            { text: "I have to check 3-4 different apps", value: 5 },
-            { text: "I ask my accountant once a month", value: 2 },
-            { text: "I check my bank balance and guess", value: 0 }
-        ]
-    },
+                // --- 8. THE DATA TRUTH (Exposing Blindness) ---
+                {
+                    question: "Do you have a single dashboard that shows your exact revenue real-time?",
+                    answers: [
+                        { text: "Yes, instant visibility", value: 10 },
+                        { text: "I have to check 3-4 different apps", value: 5 },
+                        { text: "I ask my accountant once a month", value: 2 },
+                        { text: "I check my bank balance and guess", value: 0 }
+                    ]
+                },
 
-    // --- 9. THE CLIENT EXPERIENCE (Exposing Friction) ---
-    {
-        question: "How much friction is in your client onboarding process?",
-        answers: [
-            { text: "Zero. One-click contract & pay.", value: 10 },
-            { text: "Low. Some manual emails.", value: 7 },
-            { text: "High. Lots of back-and-forth.", value: 3 },
-            { text: "It's a mess of PDFs and calls.", value: 0 }
-        ]
-    },
+                // --- 9. THE CLIENT EXPERIENCE (Exposing Friction) ---
+                {
+                    question: "How much friction is in your client onboarding process?",
+                    answers: [
+                        { text: "Zero. One-click contract & pay.", value: 10 },
+                        { text: "Low. Some manual emails.", value: 7 },
+                        { text: "High. Lots of back-and-forth.", value: 3 },
+                        { text: "It's a mess of PDFs and calls.", value: 0 }
+                    ]
+                },
 
-    // --- 10. THE FINAL DAGGER (The "Legacy" Question) ---
-    {
-        question: "Are you building a scalable asset or just a high-paying job?",
-        answers: [
-            { text: "Asset (It runs without me)", value: 10 },
-            { text: "Moving towards Asset", value: 7 },
-            { text: "Job (I trade time for money)", value: 3 },
-            { text: "It's barely a job right now", value: 0 }
-        ]
-    }
-];
+                // --- 10. THE FINAL DAGGER (The "Legacy" Question) ---
+                {
+                    question: "Are you building a scalable asset or just a high-paying job?",
+                    answers: [
+                        { text: "Asset (It runs without me)", value: 10 },
+                        { text: "Moving towards Asset", value: 7 },
+                        { text: "Job (I trade time for money)", value: 3 },
+                        { text: "It's barely a job right now", value: 0 }
+                    ]
+                }
+            ];
 
             let currentQuestionIndex = 0;
             let userScore = 0;
@@ -766,7 +1078,7 @@
             const showResults = () => {
                 const finalScore = Math.round((userScore / (questions.length * 10)) * 100);
                 scoreEl.textContent = `${finalScore}%`;
-                
+
                 let analysisText = "";
                 if (finalScore >= 80) {
                     analysisText = "Your systems are highly optimized. ROVEXA can help you scale your success to the next level with advanced revenue optimization.";
@@ -779,7 +1091,7 @@
 
                 quizContainer.classList.add('hidden');
                 resultsContainer.classList.remove('hidden');
-                
+
                 document.getElementById('schedule-upgrade-trigger').addEventListener('click', openInstaller);
             };
 
@@ -797,26 +1109,21 @@
             const actionBtn = document.getElementById('modal-action-btn');
             const closeBtn = document.getElementById('modal-close-btn');
             const heroCTA = document.querySelector('.reveal-text-delay button');
-            const resultsCTA = document.querySelector('#results-container a');
+            const resultsCTA = document.querySelector('#results-container button');
 
             let alertLevel = 0;
             let timer;
 
             const alerts = [
                 {
-                    delay: 60000, // 30 seconds
+                    delay: 120000,
                     title: "// WARNING: SYSTEM INEFFICIENCY DETECTED",
-                    message: "Manual processes are draining resources. Initiate a complimentary audit to restore full power and quantify your automation potential."
+                    message: "Manual processes are draining resources. Initiate a complimentary audit to restore full power."
                 },
                 {
-                    delay: 70000, // 60 seconds after the first closes
-                    title: "// CRITICAL ALERT: RESOURCE DRAIN ACCELERATING",
-                    message: "Significant operational drag detected. System integrity is now compromised. An immediate audit is recommended to prevent critical failure."
-                },
-                {
-                    delay: 90000, // 45 seconds after the second closes
-                    title: "// FINAL WARNING: CATASTROPHIC FAILURE IMMINENT",
-                    message: "Your window of opportunity is closing. This is the final recommendation to run a diagnostic before total system collapse becomes unavoidable."
+                    delay: 240000,
+                    title: "// ALERT: OPERATION DRAG DETECTED",
+                    message: "Optimization opportunities identified. Recommended action: System Audit."
                 }
             ];
 
@@ -870,131 +1177,131 @@
             const textField = document.getElementById('testimonial-text');
 
             const testimonials = [
-    // --- THE "FOUNDATION" WINS (Efficiency & Setup) ---
-    { name: "Aarav Prakash", text: "just increased team efficiency by 40% with the Foundation Protocol." },
-    { name: "Isha Malhotra", text: "automated over 15 hours/week of manual tasks." },
-    { name: "Vihaan Suri", text: "saw a 200% increase in qualified leads within 60 days." },
-    { name: "Anika Deshmukh", text: "reports their new brand identity has doubled their pricing power." },
-    { name: "Rohan Bhatt", text: "just secured their largest client with their new automated sales funnel." },
-    { name: "Karan Vashisht", text: "finally fired himself from Excel duty. The n8n workflow handles it all." },
-    { name: "Priya Nanduri", text: "reduced client onboarding time from 3 days to 45 minutes." },
-    { name: "Suresh Kulkarni", text: "says the CRM integration caught 50+ leads that were slipping through cracks." },
-    { name: "Aditya Rathore", text: "scaled to 30 clients without hiring a single new operations manager." },
-    { name: "Meera Kulshreshtha", text: "automations handled the entire Diwali rush without a single error." },
+                // --- THE "FOUNDATION" WINS (Efficiency & Setup) ---
+                { name: "Aarav Prakash", text: "just increased team efficiency by 40% with the Foundation Protocol." },
+                { name: "Isha Malhotra", text: "automated over 15 hours/week of manual tasks." },
+                { name: "Vihaan Suri", text: "saw a 200% increase in qualified leads within 60 days." },
+                { name: "Anika Deshmukh", text: "reports their new brand identity has doubled their pricing power." },
+                { name: "Rohan Bhatt", text: "just secured their largest client with their new automated sales funnel." },
+                { name: "Karan Vashisht", text: "finally fired himself from Excel duty. The n8n workflow handles it all." },
+                { name: "Priya Nanduri", text: "reduced client onboarding time from 3 days to 45 minutes." },
+                { name: "Suresh Kulkarni", text: "says the CRM integration caught 50+ leads that were slipping through cracks." },
+                { name: "Aditya Rathore", text: "scaled to 30 clients without hiring a single new operations manager." },
+                { name: "Meera Kulshreshtha", text: "automations handled the entire Diwali rush without a single error." },
 
-    // --- THE "FLOW" WINS (Revenue & Growth) ---
-    { name: "Vikram Ahluwalia", text: "hit their first ₹10L month after implementing the Content System." },
-    { name: "Sanya Virk", text: "brand perception went from 'freelancer' to 'agency' overnight." },
-    { name: "Arjun Khatri", text: "says the new website architecture increased conversion rate by 3.5%." },
-    { name: "Divya Raghavan", text: "stopped chasing payments; the automated invoice chaser works perfectly." },
-    { name: "Kabir Anand", text: "booked 12 demo calls this week purely through the new inbound engine." },
-    { name: "Neha Vardhan", text: "just closed a Tier-1 corporate deal thanks to the brand revamp." },
-    { name: "Rajesh Bhandari", text: "manufacturing ops are finally syncing with sales in real-time." },
-    { name: "Simran Talwar", text: "D2C repeat purchase rate went up 25% with the automated email flows." },
-    { name: "Tarun Kochhar", text: "says Rovexa isn't an agency, it's an unfair advantage." },
-    { name: "Pooja Narang", text: "content strategy is now generating leads while she sleeps." },
+                // --- THE "FLOW" WINS (Revenue & Growth) ---
+                { name: "Vikram Ahluwalia", text: "hit their first ₹10L month after implementing the Content System." },
+                { name: "Sanya Virk", text: "brand perception went from 'freelancer' to 'agency' overnight." },
+                { name: "Arjun Khatri", text: "says the new website architecture increased conversion rate by 3.5%." },
+                { name: "Divya Raghavan", text: "stopped chasing payments; the automated invoice chaser works perfectly." },
+                { name: "Kabir Anand", text: "booked 12 demo calls this week purely through the new inbound engine." },
+                { name: "Neha Vardhan", text: "just closed a Tier-1 corporate deal thanks to the brand revamp." },
+                { name: "Rajesh Bhandari", text: "manufacturing ops are finally syncing with sales in real-time." },
+                { name: "Simran Talwar", text: "D2C repeat purchase rate went up 25% with the automated email flows." },
+                { name: "Tarun Kochhar", text: "says Rovexa isn't an agency, it's an unfair advantage." },
+                { name: "Pooja Narang", text: "content strategy is now generating leads while she sleeps." },
 
-    // --- THE "LIFESTYLE" WINS (Freedom & Clarity) ---
-    { name: "Manish Khandelwal", text: "took his first weekend off in 2 years. The system didn't break." },
-    { name: "Riya Madan", text: "finally understands where her revenue is actually coming from." },
-    { name: "Varun Jaisinghani", text: "says the clarity Rovexa brought to his chaotic agency is priceless." },
-    { name: "Alisha Deol", text: "stopped doing low-value admin work. Focus is back on strategy." },
-    { name: "Dhruv Chattopadhyay", text: "the automated reporting saved his team 5 hours every Monday morning." },
-    { name: "Kriti Bhaduri", text: "her team is actually happy now that grunt work is automated." },
-    { name: "Nikhil Wadia", text: "scaled ad spend confidently because the backend can handle the volume." },
-    { name: "Zoya Trivedi", text: "branding looks so premium her competitors are asking who did it." },
-    { name: "Amitabh Kulshrestha", text: "inventory sync issues are gone. 100% accuracy for the first time." },
-    { name: "Sneha Gokhale", text: "customer support response time dropped from 4 hours to instant." },
+                // --- THE "LIFESTYLE" WINS (Freedom & Clarity) ---
+                { name: "Manish Khandelwal", text: "took his first weekend off in 2 years. The system didn't break." },
+                { name: "Riya Madan", text: "finally understands where her revenue is actually coming from." },
+                { name: "Varun Jaisinghani", text: "says the clarity Rovexa brought to his chaotic agency is priceless." },
+                { name: "Alisha Deol", text: "stopped doing low-value admin work. Focus is back on strategy." },
+                { name: "Dhruv Chattopadhyay", text: "the automated reporting saved his team 5 hours every Monday morning." },
+                { name: "Kriti Bhaduri", text: "her team is actually happy now that grunt work is automated." },
+                { name: "Nikhil Wadia", text: "scaled ad spend confidently because the backend can handle the volume." },
+                { name: "Zoya Trivedi", text: "branding looks so premium her competitors are asking who did it." },
+                { name: "Amitabh Kulshrestha", text: "inventory sync issues are gone. 100% accuracy for the first time." },
+                { name: "Sneha Gokhale", text: "customer support response time dropped from 4 hours to instant." },
 
-    // --- THE "SPECIFIC INDUSTRY" WINS ---
-    { name: "Gaurav Narang", text: "real estate lead follow-ups are now instant. Closing ratio up 15%." },
-    { name: "Farhan Zaidi", text: "EdTech student onboarding is now fully touchless." },
-    { name: "Tanvi Bhargava", text: "jewelry brand looks international now. Trust score skyrocketed." },
-    { name: "Rishab Venkataraman", text: "fitness coaching business runs on autopilot. He just coaches." },
-    { name: "Deepak Sanghvi", text: "logistics data entry is zero. Drivers update via WhatsApp bot." },
-    { name: "Anjali Kashyap", text: "clinical appointments book themselves. No more reception chaos." },
-    { name: "Harsh Mahadik", text: "legal practice billing is finally on time, every time." },
-    { name: "Ishaan Virdi", text: "creative agency workflow is smooth. No more missed deadlines." },
-    { name: "Vandana Rao", text: "franchise operations are finally standardized across 5 cities." },
-    { name: "Mohit Gulati", text: "SaaS churn rate dropped thanks to automated success check-ins." },
+                // --- THE "SPECIFIC INDUSTRY" WINS ---
+                { name: "Gaurav Narang", text: "real estate lead follow-ups are now instant. Closing ratio up 15%." },
+                { name: "Farhan Zaidi", text: "EdTech student onboarding is now fully touchless." },
+                { name: "Tanvi Bhargava", text: "jewelry brand looks international now. Trust score skyrocketed." },
+                { name: "Rishab Venkataraman", text: "fitness coaching business runs on autopilot. He just coaches." },
+                { name: "Deepak Sanghvi", text: "logistics data entry is zero. Drivers update via WhatsApp bot." },
+                { name: "Anjali Kashyap", text: "clinical appointments book themselves. No more reception chaos." },
+                { name: "Harsh Mahadik", text: "legal practice billing is finally on time, every time." },
+                { name: "Ishaan Virdi", text: "creative agency workflow is smooth. No more missed deadlines." },
+                { name: "Vandana Rao", text: "franchise operations are finally standardized across 5 cities." },
+                { name: "Mohit Gulati", text: "SaaS churn rate dropped thanks to automated success check-ins." },
 
-    // --- THE "SHORT & PUNCHY" WINS ---
-    { name: "Dev Khurana", text: "system handles the grunt work. I handle the vision." },
-    { name: "Shruti Vyas", text: "worth every rupee for the peace of mind alone." },
-    { name: "Kunal Menon", text: "Rovexa builds machines, not just websites." },
-    { name: "Radhika Solanki", text: "finally a partner that understands speed and aesthetics." },
-    { name: "Siddharth Rajvanshi", text: "the ROI on the automation setup was less than 30 days." },
-    { name: "Jhanvi Khurana", text: "social growth is compounding. The system works." },
-    { name: "Ayushmaan Tandon", text: "my business feels like a tech company now." },
-    { name: "Mira Bedi", text: "aesthetic intelligence plus raw efficiency. Rare find." },
-    { name: "Shaan Verma", text: "execution velocity has never been higher." },
-    { name: "Kiara Menon", text: "stopped renting reputation. Started building legacy." }
+                // --- THE "SHORT & PUNCHY" WINS ---
+                { name: "Dev Khurana", text: "system handles the grunt work. I handle the vision." },
+                { name: "Shruti Vyas", text: "worth every rupee for the peace of mind alone." },
+                { name: "Kunal Menon", text: "Rovexa builds machines, not just websites." },
+                { name: "Radhika Solanki", text: "finally a partner that understands speed and aesthetics." },
+                { name: "Siddharth Rajvanshi", text: "the ROI on the automation setup was less than 30 days." },
+                { name: "Jhanvi Khurana", text: "social growth is compounding. The system works." },
+                { name: "Ayushmaan Tandon", text: "my business feels like a tech company now." },
+                { name: "Mira Bedi", text: "aesthetic intelligence plus raw efficiency. Rare find." },
+                { name: "Shaurya Verma", text: "execution velocity has never been higher." },
+                { name: "Kiara Menon", text: "stopped renting reputation. Started building legacy." }
 
-// --- ADDITIONAL 50 TESTIMONIALS ---
+                // --- ADDITIONAL 50 TESTIMONIALS ---
 
-,
-{ name: "Ayaan Khatter", text: "cut operational chaos by 70% after the automation overhaul." },
-{ name: "Mahira Bhatia", text: "finally runs her agency without feeling like the bottleneck." },
-{ name: "Rudra Chauhan", text: "closing deals faster thanks to the new proposal workflow." },
-{ name: "Tara Wadhwa", text: "brand now looks international. Clients treat us differently." },
-{ name: "Rehaan Dutt", text: "went from firefighting to scaling mode within 30 days." },
-{ name: "Lavanya Gokhale", text: "loves how clean and fast her new CRM pipeline feels." },
-{ name: "Ishaan Sood", text: "cut customer response time by 90% with automated routing." },
-{ name: "Nitya Sahni", text: "the new website makes us look 3x bigger than we are." },
-{ name: "Kartik Rao", text: "automation saved his sales team from drowning in follow-ups." },
-{ name: "Diya Chhabra", text: "her D2C ops run like a silent machine now." },
+                ,
+                { name: "Ayaan Khatter", text: "cut operational chaos by 70% after the automation overhaul." },
+                { name: "Mahira Bhatia", text: "finally runs her agency without feeling like the bottleneck." },
+                { name: "Rudra Chauhan", text: "closing deals faster thanks to the new proposal workflow." },
+                { name: "Tara Wadhwa", text: "brand now looks international. Clients treat us differently." },
+                { name: "Rehaan Dutt", text: "went from firefighting to scaling mode within 30 days." },
+                { name: "Lavanya Gokhale", text: "loves how clean and fast her new CRM pipeline feels." },
+                { name: "Ishaan Sood", text: "cut customer response time by 90% with automated routing." },
+                { name: "Nitya Sahni", text: "the new website makes us look 3x bigger than we are." },
+                { name: "Kartik Rao", text: "automation saved his sales team from drowning in follow-ups." },
+                { name: "Diya Chhabra", text: "her D2C ops run like a silent machine now." },
 
-{ name: "Rehan Mallick", text: "their dashboard removed all confusion. Finally has clarity." },
-{ name: "Suhani Vashisht", text: "journey from cluttered brand to premium powerhouse." },
-{ name: "Arnav Banerjee", text: "automated task delegation boosted productivity instantly." },
-{ name: "Myra Jaiswal", text: "every customer touchpoint feels intentional now." },
-{ name: "Kabir Luthra", text: "his founders’ guilt vanished after automating the busywork." },
-{ name: "Aditi Mehra", text: "brand revamp helped her double her service pricing overnight." },
-{ name: "Yuvraj Karmakar", text: "no more missed leads. Inbox finally under control." },
-{ name: "Ira Venkatesh", text: "content system posting daily without her touching it." },
-{ name: "Shaurya Bafna", text: "team alignment improved. Everyone knows the workflow now." },
-{ name: "Samaira Tandon", text: "her ops manager literally thanked her for bringing Rovexa in." },
+                { name: "Rehan Mallick", text: "their dashboard removed all confusion. Finally has clarity." },
+                { name: "Suhani Vashisht", text: "journey from cluttered brand to premium powerhouse." },
+                { name: "Arnav Banerjee", text: "automated task delegation boosted productivity instantly." },
+                { name: "Myra Jaiswal", text: "every customer touchpoint feels intentional now." },
+                { name: "Kabir Luthra", text: "his founders’ guilt vanished after automating the busywork." },
+                { name: "Aditi Mehra", text: "brand revamp helped her double her service pricing overnight." },
+                { name: "Yuvraj Karmakar", text: "no more missed leads. Inbox finally under control." },
+                { name: "Ira Venkatesh", text: "content system posting daily without her touching it." },
+                { name: "Shaurya Bafna", text: "team alignment improved. Everyone knows the workflow now." },
+                { name: "Samaira Tandon", text: "her ops manager literally thanked her for bringing Rovexa in." },
 
-{ name: "Eshan Oberoi", text: "customer churn dropped once automations kicked in." },
-{ name: "Maahi Kohli", text: "social content is consistent and on-brand every day." },
-{ name: "Kushal Pradhan", text: "real-time analytics dashboard changed his decision-making." },
-{ name: "Trisha Bhogle", text: "she finally stopped micromanaging. System runs the day." },
-{ name: "Nakul Vardhan", text: "project delivery time is down by 40%." },
-{ name: "Avni Sabharwal", text: "website load time is insanely fast after redesign." },
-{ name: "Devansh Purohit", text: "CRM pipeline is so smooth it feels unreal." },
-{ name: "Kyra Mahadik", text: "workflow automation saved her team from burnout." },
-{ name: "Shaurya Gill", text: "brand architecture made investors take him seriously." },
-{ name: "Ridhi Sandhu", text: "sales jumped the day the new brand identity went live." },
+                { name: "Eshan Oberoi", text: "customer churn dropped once automations kicked in." },
+                { name: "Maahi Kohli", text: "social content is consistent and on-brand every day." },
+                { name: "Kushal Pradhan", text: "real-time analytics dashboard changed his decision-making." },
+                { name: "Trisha Bhogle", text: "she finally stopped micromanaging. System runs the day." },
+                { name: "Nakul Vardhan", text: "project delivery time is down by 40%." },
+                { name: "Avni Sabharwal", text: "website load time is insanely fast after redesign." },
+                { name: "Devansh Purohit", text: "CRM pipeline is so smooth it feels unreal." },
+                { name: "Kyra Mahadik", text: "workflow automation saved her team from burnout." },
+                { name: "Shaurya Gill", text: "brand architecture made investors take him seriously." },
+                { name: "Ridhi Sandhu", text: "sales jumped the day the new brand identity went live." },
 
-{ name: "Zayden Nambiar", text: "agency moved from chaos to predictable flow." },
-{ name: "Amaira Chatterjee", text: "customer LTV increasing after email automation setup." },
-{ name: "Reyansh Pillai", text: "finally stopped hopping between 12 tools." },
-{ name: "Anya Godbole", text: "the onboarding experience feels luxury now." },
-{ name: "Dhruv Vora", text: "team meetings cut in half since everything runs smoothly." },
-{ name: "Kiara Jhaveri", text: "brand consistency across platforms is flawless." },
-{ name: "Riaan Motwani", text: "automation freed him from being the 'everything guy'." },
-{ name: "Advika Seth", text: "new brand aesthetic attracts high-quality clients only." },
-{ name: "Aarush Singhania", text: "sales ops no longer depend on human memory." },
-{ name: "Inaaya Bhasin", text: "her D2C brand now feels modern, premium, and engineered." },
+                { name: "Zayden Nambiar", text: "agency moved from chaos to predictable flow." },
+                { name: "Amaira Chatterjee", text: "customer LTV increasing after email automation setup." },
+                { name: "Reyansh Pillai", text: "finally stopped hopping between 12 tools." },
+                { name: "Anya Godbole", text: "the onboarding experience feels luxury now." },
+                { name: "Dhruv Vora", text: "team meetings cut in half since everything runs smoothly." },
+                { name: "Kiara Jhaveri", text: "brand consistency across platforms is flawless." },
+                { name: "Riaan Motwani", text: "automation freed him from being the 'everything guy'." },
+                { name: "Advika Seth", text: "new brand aesthetic attracts high-quality clients only." },
+                { name: "Aarush Singhania", text: "sales ops no longer depend on human memory." },
+                { name: "Inaaya Bhasin", text: "her D2C brand now feels modern, premium, and engineered." },
 
-{ name: "Kabir Sehgal", text: "went from 70 tabs open to one dashboard. Sanity restored." },
-{ name: "Rhea More", text: "automation cleaned up years of backend mess." },
-{ name: "Zavian Rawte", text: "brand storytelling finally matches product quality." },
-{ name: "Tanisha Duggal", text: "call bookings increase after website restructuring." },
-{ name: "Aarav Jhala", text: "sync issues across tools are gone forever." },
-{ name: "Misha Narain", text: "email open rates doubled with the new flows." },
-{ name: "Kabir Deora", text: "his team finally focuses on strategy over grunt work." },
-{ name: "Aadhya Saxena", text: "brand feels premium. Ops feel frictionless." },
-{ name: "Kiaan Meher", text: "never imagined automation could be this aesthetic." },
-{ name: "Avira Bajaj", text: "her business feels organized for the first time ever." }
-];
+                { name: "Kabir Sehgal", text: "went from 70 tabs open to one dashboard. Sanity restored." },
+                { name: "Rhea More", text: "automation cleaned up years of backend mess." },
+                { name: "Zavian Rawte", text: "brand storytelling finally matches product quality." },
+                { name: "Tanisha Duggal", text: "call bookings increase after website restructuring." },
+                { name: "Aarav Jhala", text: "sync issues across tools are gone forever." },
+                { name: "Misha Narain", text: "email open rates doubled with the new flows." },
+                { name: "Kabir Deora", text: "his team finally focuses on strategy over grunt work." },
+                { name: "Aadhya Saxena", text: "brand feels premium. Ops feel frictionless." },
+                { name: "Kiaan Meher", text: "never imagined automation could be this aesthetic." },
+                { name: "Avira Bajaj", text: "her business feels organized for the first time ever." }
+            ];
 
             let bubbleTimer;
 
             const showBubble = () => {
                 const randomTestimonial = testimonials[Math.floor(Math.random() * testimonials.length)];
                 textField.innerHTML = `<span class="text-rovexa-green font-bold">${randomTestimonial.name}</span> ${randomTestimonial.text}`;
-                
+
                 bubble.classList.remove('hidden');
                 setTimeout(() => {
                     bubble.classList.remove('translate-y-16', 'opacity-0');
@@ -1013,7 +1320,7 @@
                     scheduleNextBubble();
                 }, 500);
             };
-            
+
             const scheduleNextBubble = () => {
                 const randomDelay = Math.random() * 1000 + 5500; // 10-20 seconds
                 setTimeout(showBubble, randomDelay);
@@ -1047,6 +1354,34 @@
             });
         });
 
+        // --- STICKY CARD STACKING ANIMATION ---
+        const initStackingCards = () => {
+            const cards = gsap.utils.toArray('.stack-card');
+
+            cards.forEach((card, index) => {
+                // We don't animate the last card because it just sits on top
+                if (index === cards.length - 1) return;
+
+                gsap.to(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 15%", // Matches the top-[15vh] CSS
+                        end: "bottom 15%",
+                        scrub: true,
+                        // markers: true, // Uncomment to debug
+                    },
+                    scale: 0.9, // Shrinks slightly to create depth
+                    opacity: 0, // Fades out to focus on the new card
+                    filter: "blur(10px)", // Adds blur for realism
+                    transformOrigin: "center top", // Shrinks from the top
+                    ease: "none"
+                });
+            });
+        };
+
+        // Initialize after a slight delay to allow layout to settle
+        setTimeout(initStackingCards, 500);
+
         // --- 7. NEW NAV SCROLL BEHAVIOR ---
         const nav = document.getElementById('main-nav');
         const logo = document.getElementById('nav-logo');
@@ -1071,7 +1406,7 @@
             if (isScrolled) {
                 nav.classList.add('bg-[#121212]/90', 'backdrop-blur-md', 'py-4', 'border-white/10', 'text-rovexa-bg');
                 nav.classList.remove('bg-transparent', 'py-8', 'border-transparent', 'text-rovexa-black');
-                
+
                 logo.classList.add('left-1/2', '-translate-x-1/2', 'scale-90');
                 logo.classList.remove('left-6', 'translate-x-0', 'scale-100');
 
@@ -1088,7 +1423,7 @@
 
                 desktopMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-x-10');
                 desktopMenu.classList.add('opacity-100', 'translate-x-0');
-                
+
                 menuToggle.classList.add('md:hidden');
             }
         };
@@ -1119,7 +1454,7 @@
             const contentRef = React.useRef(null);
             const [step, setStep] = React.useState(1);
             const [logs, setLogs] = React.useState([]);
-            
+
             const [formData, setFormData] = React.useState({
                 name: '',
                 email: '',
@@ -1134,15 +1469,15 @@
 
             React.useEffect(() => {
                 const tl = gsap.timeline();
-                tl.fromTo(containerRef.current, 
+                tl.fromTo(containerRef.current,
                     { y: '100%' },
                     { y: '0%', duration: 1, ease: 'power4.inOut' }
                 )
-                .fromTo(contentRef.current,
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 0.8 },
-                    "-=0.5"
-                );
+                    .fromTo(contentRef.current,
+                        { opacity: 0, y: 20 },
+                        { opacity: 1, y: 0, duration: 0.8 },
+                        "-=0.5"
+                    );
 
                 addLog('INITIALIZING PROTOCOL...');
                 setTimeout(() => addLog('SECURE CONNECTION ESTABLISHED'), 800);
@@ -1154,7 +1489,7 @@
                     addLog('ERROR: IDENTITY REQUIRED');
                     return;
                 }
-                
+
                 gsap.to('.step-content', {
                     opacity: 0,
                     x: -20,
@@ -1162,7 +1497,7 @@
                     onComplete: () => {
                         setStep(prev => prev + 1);
                         addLog(`PHASE ${step} COMPLETE. INITIATING PHASE ${step + 1}...`);
-                        gsap.fromTo('.step-content', 
+                        gsap.fromTo('.step-content',
                             { opacity: 0, x: 20 },
                             { opacity: 1, x: 0, duration: 0.3 }
                         );
@@ -1172,7 +1507,7 @@
 
             const handleSubmit = () => {
                 addLog('UPLOADING DATA PACKETS...');
-                
+
                 // Add data to Firestore
                 db.collection("leads").add(formData)
                     .then((docRef) => {
@@ -1193,18 +1528,18 @@
             return (
                 <div ref={containerRef} className="fixed inset-0 z-[9999] bg-rovexa-black text-rovexa-bg flex flex-col md:flex-row overflow-hidden">
                     {/* BACKGROUND GRID */}
-                    <div className="absolute inset-0 opacity-10 pointer-events-none" 
-                         style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+                    <div className="absolute inset-0 opacity-10 pointer-events-none"
+                        style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
                     </div>
 
                     {/* LEFT COLUMN: TERMINAL LOGS (Desktop) */}
                     <div className="hidden md:flex w-1/3 border-r border-white/10 flex-col p-10 justify-between bg-black/20 backdrop-blur-sm">
                         <div onClick={() => { onClose(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }} style={{ cursor: 'pointer' }}>
                             <div className="font-mono text-xs text-rovexa-green mb-8 animate-pulse">● SYSTEM_LIVE</div>
-                            <h2 className="text-4xl font-bold tracking-tighter mb-2">INSTALLATION<br/>WIZARD_V2</h2>
+                            <h2 className="text-4xl font-bold tracking-tighter mb-2">INSTALLATION<br />WIZARD_V2</h2>
                             <p className="font-mono text-sm text-gray-500">// CONFIGURE YOUR PROTOCOL</p>
                         </div>
-                        
+
                         <div className="font-mono text-xs text-gray-400 space-y-2 h-48 overflow-hidden flex flex-col justify-end border-t border-white/10 pt-4">
                             {logs.map((log, i) => (
                                 <div key={i} className="opacity-70">{log}</div>
@@ -1233,11 +1568,11 @@
                                     <div className="space-y-6">
                                         <div className="group">
                                             <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">FULL NAME</label>
-                                            <input 
+                                            <input
                                                 name="name"
                                                 value={formData.name}
                                                 onChange={handleChange}
-                                                type="text" 
+                                                type="text"
                                                 className="w-full bg-transparent border-b border-white/20 py-4 text-xl md:text-2xl outline-none focus:border-rovexa-green transition-colors font-sans placeholder-white/10"
                                                 placeholder="Enter your designation"
                                                 autoFocus
@@ -1245,11 +1580,11 @@
                                         </div>
                                         <div className="group">
                                             <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">BUSINESS/PERSONAL EMAIL</label>
-                                            <input 
+                                            <input
                                                 name="email"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                type="email" 
+                                                type="email"
                                                 className="w-full bg-transparent border-b border-white/20 py-4 text-xl md:text-2xl outline-none focus:border-rovexa-green transition-colors font-sans placeholder-white/10"
                                                 placeholder="access@company.com"
                                             />
@@ -1267,11 +1602,11 @@
                                     <div className="space-y-6">
                                         <div className="group">
                                             <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">COMPANY/PROJECT NAME</label>
-                                            <input 
+                                            <input
                                                 name="company"
                                                 value={formData.company}
                                                 onChange={handleChange}
-                                                type="text" 
+                                                type="text"
                                                 className="w-full bg-transparent border-b border-white/20 py-4 text-xl md:text-2xl outline-none focus:border-rovexa-green transition-colors font-sans placeholder-white/10"
                                                 placeholder="rovexa.space"
                                                 autoFocus
@@ -1279,7 +1614,7 @@
                                         </div>
                                         <div className="group">
                                             <label className="block font-mono text-xs text-gray-500 mb-2 group-focus-within:text-rovexa-green">CURRENT REVENUE BAND</label>
-                                            <select 
+                                            <select
                                                 name="revenue"
                                                 value={formData.revenue}
                                                 onChange={handleChange}
@@ -1313,7 +1648,7 @@
                                     <div className="space-y-6">
                                         <p className="font-mono text-sm text-gray-400">
                                             // You are about to initiate a system overhaul.
-                                            <br/>// Our team will review your diagnostics and deploy a custom architecture plan within 24 hours.
+                                            <br />// Our team will review your diagnostics and deploy a custom architecture plan within 24 hours.
                                         </p>
                                         <div className="bg-white/5 p-6 border-l-2 border-rovexa-green">
                                             <div className="font-mono text-xs text-gray-500 mb-2">CONFIRM DETAILS</div>
@@ -1340,8 +1675,8 @@
                                     </div>
                                     <h3 className="text-4xl md:text-6xl font-bold">SYSTEM LOCKED.</h3>
                                     <p className="font-mono text-gray-400 max-w-md mx-auto">
-                                        // Transmission received. 
-                                        <br/>// A Rovexa Architect will breach your inbox shortly.
+                                        // Transmission received.
+                                        <br />// A Rovexa Architect will breach your inbox shortly.
                                     </p>
                                     <button onClick={onClose} className="mt-12 text-rovexa-green font-mono text-sm hover:text-white border-b border-transparent hover:border-white transition-all">
                                         RETURN TO DASHBOARD
@@ -1367,7 +1702,13 @@
             ReactDOM.unmountComponentAtNode(installContainer);
         };
 
-        document.getElementById('install-system-trigger').addEventListener('click', openInstaller);
+        // Add event listeners to both the Hero button and the Bottom button
+        // UPDATED: Added #wizard-trigger-v2 to the selector
+        const triggers = document.querySelectorAll('#install-system-trigger, #hero-install-trigger, #wizard-trigger-v2');
+        triggers.forEach(btn => {
+            if (btn) btn.addEventListener('click', openInstaller);
+        });
     </script>
 </body>
+
 </html>
