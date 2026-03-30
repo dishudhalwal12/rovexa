@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { dmSans, inter, migra } from "@/lib/fonts";
+import { caveat, dmSans, inter, migra } from "@/lib/fonts";
 import { AppBootstrap } from "@/components/layout/app-bootstrap";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
   icons: {
     icon: "/images/favicon.png",
     shortcut: "/images/favicon.png",
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
   title: {
     default: "Rovexa",
     template: "%s | Rovexa"
+  },
+  alternates: {
+    canonical: "/"
   },
   description: siteConfig.description,
   keywords: [
@@ -45,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${dmSans.variable} ${migra.variable} bg-[var(--background)] text-[var(--foreground)] antialiased`}>
+      <body className={`${inter.variable} ${dmSans.variable} ${caveat.variable} ${migra.variable} bg-[var(--background)] text-[var(--foreground)] antialiased`}>
         <AppBootstrap>{children}</AppBootstrap>
       </body>
     </html>
