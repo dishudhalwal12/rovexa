@@ -1,4 +1,4 @@
-import { DM_Sans, Inter } from "next/font/google";
+import { Caveat, DM_Sans, Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 export const inter = Inter({
@@ -15,6 +15,13 @@ export const dmSans = DM_Sans({
   weight: ["700", "800"]
 });
 
+export const caveat = Caveat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-hand",
+  weight: ["500"]
+});
+
 export const migra = localFont({
   src: [
     {
@@ -26,4 +33,3 @@ export const migra = localFont({
   display: "swap",
   variable: "--font-brand"
 });
-
